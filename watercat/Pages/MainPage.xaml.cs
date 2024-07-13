@@ -1,4 +1,4 @@
-﻿namespace watercat;
+﻿namespace watercat.Pages;
 
 public partial class MainPage : ContentPage
 {
