@@ -5,10 +5,18 @@
              BackgroundColor="#22223B">
 
     <ScrollView>
-        <Label Text="Total water you drank today:"
-               SemanticProperties.HeadingLevel="Level1"
-               HorizontalTextAlignment="Center"
-               TextColor="#F2E9E4"/>
+        <VerticalStackLayout>
+            <Label Text="Total water you drank today:"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#F2E9E4"
+                   FontFamily="PressStart2P-Regular"/>
+            
+            <Button Text="Log water"
+                    TextColor="#F2E9E4"
+                    BackgroundColor="#C9ADA7"
+                    FontFamily="PressStart2P-Regular"/>
+        </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
