@@ -5,15 +5,21 @@
              BackgroundColor="#22223B">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30, 40">
-            <Label Text="Total water you drank today:"
+        <VerticalStackLayout>
+            <Image Margin="20, 0, 20, 30"
+                   Source="app_topbanner.png"
+                   Aspect="AspectFit"
+                   Scale="1.4"/>
+            
+            <Label Margin="20, 20, 20, 0"
+                   Text="Total water you drank today:"
                    FontSize="20"
                    HorizontalTextAlignment="Center"
                    TextColor="#F2E9E4"
                    FontFamily="PressStart2P-Regular"/>
             
             <Image Source="glass.png"
-                   HeightRequest="310"
+                   HeightRequest="330"
                    Scale="0.8"
                    Aspect="AspectFill"/>
             
@@ -23,7 +29,8 @@
                    FontFamily="DMSans-Regular"
                    FontSize="25"/>
             
-            <Button Text="Log water"
+            <Button Margin="70, 20"
+                    Text="Log water"
                     TextColor="#F2E9E4"
                     BackgroundColor="#C9ADA7"
                     FontFamily="PressStart2P-Regular"/>
