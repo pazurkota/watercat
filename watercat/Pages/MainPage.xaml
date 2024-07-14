@@ -6,12 +6,12 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <Image Margin="20, 0, 20, 30"
-                   Source="app_topbanner.png"
+            <Image Margin="20, 0"
+                   Source="top_banner.png"
                    Aspect="AspectFit"
-                   Scale="1.4"/>
+                   Scale="1.15"/>
             
-            <Label Margin="20, 20, 20, 0"
+            <Label Margin="20, 0"
                    Text="Total water you drank today:"
                    FontSize="20"
                    HorizontalTextAlignment="Center"
