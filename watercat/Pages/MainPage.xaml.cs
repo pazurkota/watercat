@@ -6,4 +6,9 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
     }
+
+    private async void Button_AddWater(object sender, EventArgs e)
+    {
+        await DisplayPromptAsync("Add water", "Enter water amount below (in ml):", keyboard: Keyboard.Numeric);
+    }
 }
