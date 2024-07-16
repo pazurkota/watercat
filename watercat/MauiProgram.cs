@@ -11,8 +11,8 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("DMSans-Regular.ttf", "DMSans-Regular");
-                fonts.AddFont("PressStart2P-Regular.ttf", "PressStart2P-Regular");
+                fonts.AddFont("Silkscreen-Regular.ttf", "Silkscreen");
+                fonts.AddFont("PressStart2P-Regular.ttf", "PressStart2P");
             });
 
 #if DEBUG

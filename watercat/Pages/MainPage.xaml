@@ -16,7 +16,7 @@
                    FontSize="20"
                    HorizontalTextAlignment="Center"
                    TextColor="#F2E9E4"
-                   FontFamily="PressStart2P-Regular"/>
+                   FontFamily="PressStart2P"/>
             
             <Image Source="glass.png"
                    HeightRequest="330"
@@ -26,14 +26,14 @@
             <Label Text="1000ml/2500ml"
                    TextColor="#F2E9E4"
                    HorizontalTextAlignment="Center"
-                   FontFamily="DMSans-Regular"
+                   FontFamily="Silkscreen"
                    FontSize="25"/>
             
             <Button Margin="70, 20"
                     Text="Log water"
                     TextColor="#F2E9E4"
                     BackgroundColor="#C9ADA7"
-                    FontFamily="PressStart2P-Regular"
+                    FontFamily="PressStart2P"
                     Pressed="Button_AddWater"/>
         </VerticalStackLayout>
     </ScrollView>
