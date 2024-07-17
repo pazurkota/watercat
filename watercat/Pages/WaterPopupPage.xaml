@@ -3,7 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="watercat.Pages.WaterPopupPage">
-    <ContentPage.Content>
+    <VerticalStackLayout Spacing="10">
+        <Label Text="Log water:"
+               FontFamily="PressStart2P"
+               HorizontalTextAlignment="Center"/>
         
-    </ContentPage.Content>
+        <Button Text="180ml"
+                FontFamily="Silkscreen"/>
+        
+        <Button Text="250ml"
+                FontFamily="Silkscreen"/>
+        
+        <Button Text="500ml"
+                FontFamily="Silkscreen"/>
+        
+        <Label Text="Custom amount:"
+               FontFamily="Silkscreen"/>
+        
+        <Entry Keyboard="Numeric"/>
+    </VerticalStackLayout>
 </toolkit:Popup>
