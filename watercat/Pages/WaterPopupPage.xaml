@@ -2,28 +2,43 @@
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="watercat.Pages.WaterPopupPage">
-    <VerticalStackLayout Padding="10" Spacing="10">
-        <Label Text="Log water:"
-               FontFamily="PressStart2P"
-               FontSize="20"
-               HorizontalTextAlignment="Center"/>
+             x:Class="watercat.Pages.WaterPopupPage"
+             Color="Transparent">
+    
+    <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10"/>
+        </Border.StrokeShape>
         
-        <Button Text="180ml"
-                FontFamily="Silkscreen"/>
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <Label Text="Log water:"
+                   FontFamily="PressStart2P"
+                   FontSize="20"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"/>
         
-        <Button Text="250ml"
-                FontFamily="Silkscreen"/>
+            <Button Text="180ml"
+                    FontFamily="Silkscreen"
+                    BackgroundColor="#BDE0FE"/>
         
-        <Button Text="500ml"
-                FontFamily="Silkscreen"/>
+            <Button Text="250ml"
+                    FontFamily="Silkscreen"
+                    BackgroundColor="#BDE0FE"/>
         
-        <Label Text="Custom amount:"
-               FontFamily="PressStart2P"
-               FontSize="13"
-               HorizontalTextAlignment="Center"/>
+            <Button Text="500ml"
+                    FontFamily="Silkscreen"
+                    BackgroundColor="#BDE0FE"/>
         
-        <Entry Keyboard="Numeric"
-               WidthRequest="200"/>
-    </VerticalStackLayout>
+            <Label Text="Custom amount:"
+                   FontFamily="PressStart2P"
+                   FontSize="13"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"/>
+        
+            <Entry Keyboard="Numeric"
+                   TextColor="#FFFFFF"
+                   FontFamily="Silkscreen"
+                   WidthRequest="200"/>
+        </VerticalStackLayout>
+    </Border>
 </toolkit:Popup>
