@@ -18,7 +18,7 @@
                    TextColor="#FFFFFF"
                    FontFamily="PressStart2P"/>
             
-            <Image Source="glass.png"
+            <Image Source="glass_filled.png"
                    HeightRequest="330"
                    Scale="0.8"
                    Aspect="AspectFill"/>
