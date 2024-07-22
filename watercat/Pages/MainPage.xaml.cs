@@ -1,16 +1,13 @@
 ﻿using CommunityToolkit.Maui.Views;
+using watercat.ViewModel;
 
 namespace watercat.Pages;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    public MainPage(MainPageViewModel viewModel)
     {
         InitializeComponent();
-    }
-
-    private async void Button_AddWater(object sender, EventArgs e)
-    {
-        this.ShowPopup(new WaterPopupPage());
+        BindingContext = viewModel;
     }
 }

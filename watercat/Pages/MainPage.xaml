@@ -4,7 +4,10 @@
              xmlns:viewmodel="clr-namespace:watercat.ViewModel"
              x:Class="watercat.Pages.MainPage"
              BackgroundColor="#A2D2FF">
-
+    <ContentPage.BindingContext>
+           <viewmodel:MainPageViewModel />
+    </ContentPage.BindingContext>   
+       
     <ScrollView>
         <VerticalStackLayout>
             <Image Margin="20, 0"
@@ -24,7 +27,7 @@
                    Scale="0.8"
                    Aspect="AspectFill"/>
             
-            <Label Text="1000ml/2500ml"
+            <Label Text="{Binding WaterSummary}"
                    TextColor="#FFFFFF"
                    HorizontalTextAlignment="Center"
                    FontFamily="Silkscreen"
@@ -35,7 +38,7 @@
                     TextColor="#FFFFFF"
                     BackgroundColor="#BDE0FE"
                     FontFamily="PressStart2P"
-                    Pressed="Button_AddWater"/>
+                    Command="{Binding ShowPopUpCommand}"/>
         </VerticalStackLayout>
     </ScrollView>
 

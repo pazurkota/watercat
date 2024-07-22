@@ -6,40 +6,47 @@
              x:Class="watercat.Pages.WaterPopupPage"
              Color="Transparent">
     
-    <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="10"/>
-        </Border.StrokeShape>
+    <toolkit:Popup.BindingContext>
+        <viewmodel:MainPageViewModel />
+    </toolkit:Popup.BindingContext>
+    
+
+        <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
         
-        <VerticalStackLayout Padding="10" Spacing="10">
-            <Label Text="Log water:"
-                   FontFamily="PressStart2P"
-                   FontSize="20"
-                   TextColor="#FFFFFF"
-                   HorizontalTextAlignment="Center"/>
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label Text="Log water:"
+                       FontFamily="PressStart2P"
+                       FontSize="20"
+                       TextColor="#FFFFFF"
+                       HorizontalTextAlignment="Center"/>
         
-            <Button Text="180ml"
-                    FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"/>
+                <Button Text="180ml"
+                        FontFamily="Silkscreen"
+                        BackgroundColor="#BDE0FE"
+                        Pressed="AddWater_OnPressed"/>
         
-            <Button Text="250ml"
-                    FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"/>
+                <Button Text="250ml"
+                        FontFamily="Silkscreen"
+                        BackgroundColor="#BDE0FE"/>
         
-            <Button Text="500ml"
-                    FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"/>
+                <Button Text="500ml"
+                        FontFamily="Silkscreen"
+                        BackgroundColor="#BDE0FE"/>
         
-            <Label Text="Custom amount:"
-                   FontFamily="PressStart2P"
-                   FontSize="13"
-                   TextColor="#FFFFFF"
-                   HorizontalTextAlignment="Center"/>
+                <Label Text="Custom amount:"
+                       FontFamily="PressStart2P"
+                       FontSize="13"
+                       TextColor="#FFFFFF"
+                       HorizontalTextAlignment="Center"/>
         
-            <Entry Keyboard="Numeric"
-                   TextColor="#FFFFFF"
-                   FontFamily="Silkscreen"
-                   WidthRequest="200"/>
-        </VerticalStackLayout>
-    </Border>
+                <Entry Keyboard="Numeric"
+                       TextColor="#FFFFFF"
+                       FontFamily="Silkscreen"
+                       WidthRequest="200"/>
+            </VerticalStackLayout>
+        </Border>        
+
 </toolkit:Popup>
