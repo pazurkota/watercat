@@ -16,4 +16,12 @@ public partial class WaterPopupPage : Popup
     {
         Close();
     }
+
+    private void Entry_OnCompleted(object sender, EventArgs e)
+    {
+        if (sender is Entry entry && BindingContext is WaterPopupPageViewModel viewModel)
+        {
+            viewModel.AddWaterCommand.Execute(entry.Text);
+        }
+    }
 }
