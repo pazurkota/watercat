@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using CommunityToolkit.Maui.Views;
+﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using watercat.Pages;
@@ -27,8 +26,7 @@ public partial class MainPageViewModel : ObservableObject
         Shell.Current.ShowPopup(new WaterPopupPage(this));
     }
     
-    [RelayCommand]
-    private void AddWater(string waterAmount)
+    public void AddWater(string waterAmount)
     {
         WaterIntake += int.Parse(waterAmount);
         WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";

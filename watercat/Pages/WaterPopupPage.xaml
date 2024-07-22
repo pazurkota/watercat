@@ -7,7 +7,7 @@
              Color="Transparent">
     
     <toolkit:Popup.BindingContext>
-        <viewmodel:MainPageViewModel />
+        <viewmodel:WaterPopupPageViewModel />
     </toolkit:Popup.BindingContext>
     
 

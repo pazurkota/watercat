@@ -8,6 +8,12 @@ public partial class WaterPopupPage : Popup
     public WaterPopupPage(MainPageViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = viewModel;
+        var closeAction = new Action(ClosePopup);
+        BindingContext = new WaterPopupPageViewModel(viewModel, closeAction);
+    }
+
+    private void ClosePopup()
+    {
+        Close();
     }
 }
