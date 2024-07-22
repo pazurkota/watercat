@@ -26,15 +26,20 @@
                 <Button Text="180ml"
                         FontFamily="Silkscreen"
                         BackgroundColor="#BDE0FE"
-                        Pressed="AddWater_OnPressed"/>
+                        Command="{Binding AddWaterCommand}"
+                        CommandParameter="180"/>
         
                 <Button Text="250ml"
                         FontFamily="Silkscreen"
-                        BackgroundColor="#BDE0FE"/>
+                        BackgroundColor="#BDE0FE"
+                        Command="{Binding AddWaterCommand}"
+                        CommandParameter="250"/>
         
                 <Button Text="500ml"
                         FontFamily="Silkscreen"
-                        BackgroundColor="#BDE0FE"/>
+                        BackgroundColor="#BDE0FE"
+                        Command="{Binding AddWaterCommand}"
+                        CommandParameter="500"/>
         
                 <Label Text="Custom amount:"
                        FontFamily="PressStart2P"

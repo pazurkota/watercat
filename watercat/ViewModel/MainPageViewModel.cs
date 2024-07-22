@@ -27,14 +27,10 @@ public partial class MainPageViewModel : ObservableObject
         Shell.Current.ShowPopup(new WaterPopupPage(this));
     }
     
-    public void AddWater(int waterAmount)
+    [RelayCommand]
+    private void AddWater(string waterAmount)
     {
-        Debug.WriteLine($"Added {waterAmount}ml of water");
-        
-        WaterIntake += waterAmount;
-        Debug.WriteLine($"Water Intake: {WaterIntake}ml");
-
+        WaterIntake += int.Parse(waterAmount);
         WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
-        Debug.WriteLine(WaterSummary);
     }
 }

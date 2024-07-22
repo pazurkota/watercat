@@ -10,12 +10,4 @@ public partial class WaterPopupPage : Popup
         InitializeComponent();
         BindingContext = viewModel;
     }
-
-    private void AddWater_OnPressed(object sender, EventArgs e)
-    {
-        var viewModel = (MainPageViewModel)BindingContext;
-        
-        viewModel.AddWater(180);
-        Close();
-    }
 }
