@@ -22,7 +22,7 @@
                    TextColor="#FFFFFF"
                    FontFamily="PressStart2P"/>
             
-            <Image Source="glass_filled.png"
+            <Image Source="{Binding WaterImage}"
                    HeightRequest="330"
                    Scale="0.8"
                    Aspect="AspectFill"/>

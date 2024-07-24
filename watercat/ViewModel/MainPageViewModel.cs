@@ -9,14 +9,14 @@ public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty] private int _waterIntake;
     [ObservableProperty] private int _dailyWaterGoal;
-    [ObservableProperty] private double _waterHeight;
+    [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
 
     public MainPageViewModel()
     {
         WaterIntake = 0;
         DailyWaterGoal = 2500;
-        WaterHeight = 0;
+        WaterImage = CalculateWaterImage();
         WaterSummary = $"0ml/{DailyWaterGoal}ml";
     }
 
@@ -30,5 +30,18 @@ public partial class MainPageViewModel : ObservableObject
     {
         WaterIntake += int.Parse(waterAmount);
         WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
+        WaterImage = CalculateWaterImage();
+    }
+
+    private string CalculateWaterImage()
+    {
+        var percentage = (double)WaterIntake / DailyWaterGoal;
+        
+        // 10% increment
+        var index = (int)(percentage * 10);
+        index = Math.Clamp(index, 0, 10);
+        
+        // return the image path
+        return $"water_fill_{index * 10}.png";
     }
 }
