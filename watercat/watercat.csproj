@@ -61,4 +61,10 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="CommunityToolkit.Maui">
+        <HintPath>..\..\..\.nuget\packages\communitytoolkit.maui\9.0.2\lib\net8.0-ios17.2\CommunityToolkit.Maui.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

@@ -2,43 +2,59 @@
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:watercat.ViewModel"
+             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit/behaviors"
              x:Class="watercat.Pages.WaterPopupPage"
              Color="Transparent">
     
-    <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="10"/>
-        </Border.StrokeShape>
+    <toolkit:Popup.BindingContext>
+        <viewmodel:WaterPopupPageViewModel />
+    </toolkit:Popup.BindingContext>
+    
+
+        <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
         
-        <VerticalStackLayout Padding="10" Spacing="10">
-            <Label Text="Log water:"
-                   FontFamily="PressStart2P"
-                   FontSize="20"
-                   TextColor="#FFFFFF"
-                   HorizontalTextAlignment="Center"/>
+            <VerticalStackLayout Padding="10" Spacing="10">
+                <Label Text="Log water:"
+                       FontFamily="PressStart2P"
+                       FontSize="20"
+                       TextColor="#FFFFFF"
+                       HorizontalTextAlignment="Center"/>
         
-            <Button Text="180ml"
-                    FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"/>
+                <Button Text="180ml"
+                        FontFamily="Silkscreen"
+                        BackgroundColor="#BDE0FE"
+                        Command="{Binding AddWaterCommand}"
+                        CommandParameter="180"/>
         
-            <Button Text="250ml"
-                    FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"/>
+                <Button Text="250ml"
+                        FontFamily="Silkscreen"
+                        BackgroundColor="#BDE0FE"
+                        Command="{Binding AddWaterCommand}"
+                        CommandParameter="250"/>
         
-            <Button Text="500ml"
-                    FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"/>
+                <Button Text="500ml"
+                        FontFamily="Silkscreen"
+                        BackgroundColor="#BDE0FE"
+                        Command="{Binding AddWaterCommand}"
+                        CommandParameter="500"/>
         
-            <Label Text="Custom amount:"
-                   FontFamily="PressStart2P"
-                   FontSize="13"
-                   TextColor="#FFFFFF"
-                   HorizontalTextAlignment="Center"/>
+                <Label Text="Custom amount:"
+                       FontFamily="PressStart2P"
+                       FontSize="13"
+                       TextColor="#FFFFFF"
+                       HorizontalTextAlignment="Center"/>
         
-            <Entry Keyboard="Numeric"
-                   TextColor="#FFFFFF"
-                   FontFamily="Silkscreen"
-                   WidthRequest="200"/>
-        </VerticalStackLayout>
-    </Border>
+                <Entry Keyboard="Numeric"
+                       TextColor="#FFFFFF"
+                       FontFamily="Silkscreen"
+                       WidthRequest="200"
+                       Completed="Entry_OnCompleted"
+                       />
+            </VerticalStackLayout>
+        </Border>        
+
 </toolkit:Popup>
