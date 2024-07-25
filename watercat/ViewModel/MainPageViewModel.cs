@@ -43,7 +43,6 @@ public partial class MainPageViewModel : ObservableObject
     private void Initialize()
     {
         DailyWaterGoal = 2500;
-        WaterImage = UpdateWaterImage();
         AppVersion = $"App version: v{VersionTracking.CurrentVersion}";
         
         var lastUpdate = Preferences.Get(LastUpdateDateKey, DateTime.MinValue);
@@ -61,6 +60,7 @@ public partial class MainPageViewModel : ObservableObject
         }
         
         UpdateWaterSummary();
+        WaterImage = UpdateWaterImage();
     }
     
     private string UpdateWaterImage()
