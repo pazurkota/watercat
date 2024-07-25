@@ -46,6 +46,13 @@
                     BackgroundColor="#BDE0FE"
                     FontFamily="PressStart2P"
                     Command="{Binding ResetWaterIntakeCommand}"/>
+            
+            <Label Margin="0, 30"
+                   Text="{Binding AppVersion}"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"
+                   FontFamily="Silkscreen"
+                   FontSize="17"/>
         </VerticalStackLayout>
     </ScrollView>
 

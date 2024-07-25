@@ -11,6 +11,7 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty] private int _dailyWaterGoal;
     [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
+    [ObservableProperty] private string _appVersion;
 
     private const string WaterIntakeKey = "WaterIntake"; // key for storing water intake
     private const string LastUpdateDateKey = "LastUpdateDate"; // key for storing last update date
@@ -18,8 +19,6 @@ public partial class MainPageViewModel : ObservableObject
     public MainPageViewModel()
     {
         Initialize();
-        DailyWaterGoal = 2500;
-        WaterImage = UpdateWaterImage();
     }
 
     [RelayCommand]
@@ -27,6 +26,8 @@ public partial class MainPageViewModel : ObservableObject
     {
         Shell.Current.ShowPopup(new WaterPopupPage(this));
     }
+    
+    private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
     
     public void AddWater(string waterAmount)
     {
@@ -41,6 +42,10 @@ public partial class MainPageViewModel : ObservableObject
 
     private void Initialize()
     {
+        DailyWaterGoal = 2500;
+        WaterImage = UpdateWaterImage();
+        AppVersion = $"App version: v{VersionTracking.CurrentVersion}";
+        
         var lastUpdate = Preferences.Get(LastUpdateDateKey, DateTime.MinValue);
 
         // reset if new day
@@ -69,11 +74,9 @@ public partial class MainPageViewModel : ObservableObject
         // return the image path
         return $"water_fill_{index * 10}.png";
     }
-
-    private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
-
-    [RelayCommand]
-    private void ResetWaterIntake() // reset water stats
+    
+    [RelayCommand] // reset water stats
+    private void ResetWaterIntake() 
     {
         WaterIntake = 0;
         UpdateWaterSummary();
