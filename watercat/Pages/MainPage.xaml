@@ -39,6 +39,13 @@
                     BackgroundColor="#BDE0FE"
                     FontFamily="PressStart2P"
                     Command="{Binding ShowPopUpCommand}"/>
+            
+            <Button Margin="70, 0"
+                    Text="Reset Water"
+                    TextColor="#FFFFFF"
+                    BackgroundColor="#BDE0FE"
+                    FontFamily="PressStart2P"
+                    Command="{Binding ResetWaterIntakeCommand}"/>
         </VerticalStackLayout>
     </ScrollView>
 

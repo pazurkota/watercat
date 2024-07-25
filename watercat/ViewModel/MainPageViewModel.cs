@@ -19,7 +19,7 @@ public partial class MainPageViewModel : ObservableObject
     {
         Initialize();
         DailyWaterGoal = 2500;
-        WaterImage = CalculateWaterImage();
+        WaterImage = UpdateWaterImage();
     }
 
     [RelayCommand]
@@ -31,7 +31,7 @@ public partial class MainPageViewModel : ObservableObject
     public void AddWater(string waterAmount)
     {
         WaterIntake += int.Parse(waterAmount);
-        WaterImage = CalculateWaterImage();
+        WaterImage = UpdateWaterImage();
         UpdateWaterSummary();
         
         // save current water stats
@@ -58,7 +58,7 @@ public partial class MainPageViewModel : ObservableObject
         UpdateWaterSummary();
     }
     
-    private string CalculateWaterImage()
+    private string UpdateWaterImage()
     {
         var percentage = (double)WaterIntake / DailyWaterGoal;
         
@@ -71,4 +71,12 @@ public partial class MainPageViewModel : ObservableObject
     }
 
     private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
+
+    [RelayCommand]
+    private void ResetWaterIntake() // reset water stats
+    {
+        WaterIntake = 0;
+        UpdateWaterSummary();
+        WaterImage = UpdateWaterImage();
+    }
 }
