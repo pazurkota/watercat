@@ -12,12 +12,14 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
 
+    private const string WaterIntakeKey = "WaterIntake"; // key for storing water intake
+    private const string LastUpdateDateKey = "LastUpdateDate"; // key for storing last update date
+
     public MainPageViewModel()
     {
-        WaterIntake = 0;
+        Initialize();
         DailyWaterGoal = 2500;
         WaterImage = CalculateWaterImage();
-        WaterSummary = $"0ml/{DailyWaterGoal}ml";
     }
 
     [RelayCommand]
@@ -29,10 +31,33 @@ public partial class MainPageViewModel : ObservableObject
     public void AddWater(string waterAmount)
     {
         WaterIntake += int.Parse(waterAmount);
-        WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
         WaterImage = CalculateWaterImage();
+        UpdateWaterSummary();
+        
+        // save current water stats
+        Preferences.Set(WaterIntakeKey, WaterIntake);
+        Preferences.Set(LastUpdateDateKey, DateTime.Today);
     }
 
+    private void Initialize()
+    {
+        var lastUpdate = Preferences.Get(LastUpdateDateKey, DateTime.MinValue);
+
+        // reset if new day
+        if (lastUpdate.Date != DateTime.Today) 
+        {
+            WaterIntake = 0;
+            Preferences.Set(WaterIntakeKey, 0);
+            Preferences.Set(LastUpdateDateKey, DateTime.Today);
+        }
+        else
+        {
+            WaterIntake = Preferences.Get(WaterIntakeKey, 0);
+        }
+        
+        UpdateWaterSummary();
+    }
+    
     private string CalculateWaterImage()
     {
         var percentage = (double)WaterIntake / DailyWaterGoal;
@@ -44,4 +69,6 @@ public partial class MainPageViewModel : ObservableObject
         // return the image path
         return $"water_fill_{index * 10}.png";
     }
+
+    private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
 }
