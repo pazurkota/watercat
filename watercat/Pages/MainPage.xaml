@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:watercat.ViewModel"
+             x:Class="watercat.Pages.MainPage"
+             BackgroundColor="#A2D2FF">
+    <ContentPage.BindingContext>
+           <viewmodel:MainPageViewModel />
+    </ContentPage.BindingContext>   
+       
+    <ScrollView>
+        <VerticalStackLayout>
+            <Image Margin="20, 0"
+                   Source="top_banner.png"
+                   Aspect="AspectFit"
+                   Scale="1.15"/>
+            
+            <Label Margin="20, 0"
+                   Text="Total water you drank today:"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   TextColor="#FFFFFF"
+                   FontFamily="PressStart2P"/>
+            
+            <Image Source="{Binding WaterImage}"
+                   HeightRequest="330"
+                   Scale="0.8"
+                   Aspect="AspectFill"/>
+            
+            <Label Text="{Binding WaterSummary}"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"
+                   FontFamily="Silkscreen"
+                   FontSize="25"/>
+            
+            <Button Margin="70, 20"
+                    Text="Log water"
+                    TextColor="#FFFFFF"
+                    BackgroundColor="#BDE0FE"
+                    FontFamily="PressStart2P"
+                    Command="{Binding ShowPopUpCommand}"/>
+            
+            <Button Margin="70, 0"
+                    Text="Reset Water"
+                    TextColor="#FFFFFF"
+                    BackgroundColor="#BDE0FE"
+                    FontFamily="PressStart2P"
+                    Command="{Binding ResetWaterIntakeCommand}"/>
+            
+            <Label Margin="0, 30"
+                   Text="{Binding AppVersion}"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"
+                   FontFamily="Silkscreen"
+                   FontSize="17"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
