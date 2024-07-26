@@ -12,12 +12,47 @@
             <RoundRectangle CornerRadius="10"/>
         </Border.StrokeShape>
         
-        <VerticalStackLayout Padding="10" Spacing="10">
+        <VerticalStackLayout Padding="10" Spacing="10" Margin="0, 15">
             <Label Text="About:"
                    FontFamily="PressStart2P"
-                   FontSize="20"
+                   FontSize="25"
                    TextColor="#FFFFFF"
                    HorizontalTextAlignment="Center"/>
+            
+            <Label Text="App version: v0.0"
+                   FontFamily="Silkscreen"
+                   FontSize="17"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"/>
+            
+            <!-- Link to Github repository -->
+            <Label Margin="0, 20, 0, 0"
+                   Text="Github Repo:"
+                   FontFamily="PressStart2P"
+                   FontSize="17"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"/>
+            
+            <Button Text="Click here!"
+                    BackgroundColor="Transparent"
+                    TextColor="#FFFFFF"
+                    FontFamily="Silkscreen"
+                    FontSize="17"
+                    FontAttributes="Bold"/>
+            
+            <!-- Link to pazurkota.me -->
+            <Label Text="Author:"
+                   FontFamily="PressStart2P"
+                   FontSize="17"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"/>
+            
+            <Button Text="Click here!"
+                    BackgroundColor="Transparent"
+                    TextColor="#FFFFFF"
+                    FontFamily="Silkscreen"
+                    FontSize="17"
+                    FontAttributes="Bold"/>
         </VerticalStackLayout>
     </Border>   
 </toolkit:Popup>
