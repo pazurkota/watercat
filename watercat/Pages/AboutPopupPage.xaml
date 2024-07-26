@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="watercat.Pages.AboutPopupPage"
+             Color="Transparent">
+    
+    
+    <Border BackgroundColor="#CDB4DB" Stroke="Transparent" HeightRequest="300" WidthRequest="250">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10"/>
+        </Border.StrokeShape>
+        
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <Label Text="About:"
+                   FontFamily="PressStart2P"
+                   FontSize="20"
+                   TextColor="#FFFFFF"
+                   HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+    </Border>   
+</toolkit:Popup>
