@@ -38,7 +38,8 @@
                     TextColor="#FFFFFF"
                     FontFamily="Silkscreen"
                     FontSize="17"
-                    FontAttributes="Bold"/>
+                    FontAttributes="Bold"
+                    Clicked="GithubRepoButton_OnClicked"/>
             
             <!-- Link to pazurkota.me -->
             <Label Text="Author:"
@@ -52,7 +53,8 @@
                     TextColor="#FFFFFF"
                     FontFamily="Silkscreen"
                     FontSize="17"
-                    FontAttributes="Bold"/>
+                    FontAttributes="Bold"
+                    Clicked="WebsiteButton_OnClicked"/>
         </VerticalStackLayout>
     </Border>   
 </toolkit:Popup>
