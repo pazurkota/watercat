@@ -2,11 +2,52 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="watercat.Pages.SettingsPage">
+             x:Class="watercat.Pages.SettingsPage"
+             BackgroundColor="#A2D2FF">
     <ContentPage.Content>
         <ScrollView>
-            <VerticalStackLayout>
-                <Label Text="Settings" />
+            <VerticalStackLayout Spacing="10" Margin="10">
+                <Label Text="Settings:" 
+                       TextColor="#FFFFFF"
+                       FontFamily="PressStart2P"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                
+                <!-- Daily water goal settings -->
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
+                           Text="Daily Goal:"
+                           TextColor="#FFFFFF"
+                           FontSize="20"
+                           FontFamily="Silkscreen"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Entry Grid.Column="1"
+                           Keyboard="Numeric"
+                           TextColor="#FFFFFF"
+                           FontFamily="Silkscreen"/>
+                </Grid>
+                
+                <!-- Water unit settings -->
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
+                           Text="Units:"
+                           TextColor="#FFFFFF"
+                           FontSize="20"
+                           FontFamily="Silkscreen"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Picker Grid.Column="1"
+                            Title="Choose unit">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Milliliter</x:String>
+                                <x:String>Fluid ounce (US)</x:String>
+                                <x:String>Fluid ounce (UK)</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
                 
                 <Button Text="About" 
                         Clicked="AboutButton_OnClicked"/>
