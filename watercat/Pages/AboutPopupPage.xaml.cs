@@ -10,6 +10,7 @@ public partial class AboutPopupPage : Popup
     public AboutPopupPage()
     {
         InitializeComponent();
+        AppVersionLabel.Text = $"App version: v{VersionTracking.CurrentVersion}";
     }
 
     private async void GithubRepoButton_OnClicked(object sender, EventArgs e)

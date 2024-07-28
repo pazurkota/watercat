@@ -23,7 +23,8 @@
                    FontFamily="Silkscreen"
                    FontSize="17"
                    TextColor="#FFFFFF"
-                   HorizontalTextAlignment="Center"/>
+                   HorizontalTextAlignment="Center"
+                   x:Name="AppVersionLabel"/>
             
             <!-- Link to Github repository -->
             <Label Margin="0, 20, 0, 0"
