@@ -6,7 +6,7 @@
              BackgroundColor="#A2D2FF">
     <ContentPage.Content>
         <ScrollView>
-            <VerticalStackLayout Spacing="10" Margin="10">
+            <VerticalStackLayout Spacing="10" Margin="20">
                 <Label Text="Settings:" 
                        TextColor="#FFFFFF"
                        FontFamily="PressStart2P"
@@ -37,20 +37,21 @@
                            FontFamily="Silkscreen"
                            VerticalTextAlignment="Center"/>
                     
-                    <Picker Grid.Column="1"
-                            Title="Choose unit">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Milliliter</x:String>
-                                <x:String>Fluid ounce (US)</x:String>
-                                <x:String>Fluid ounce (UK)</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
+                    <Button Grid.Column="1"
+                            Background="#CDB4DB"
+                            Text="Choose unit"
+                            FontSize="20"
+                            FontFamily="Silkscreen"
+                            TextColor="#FFFFFF"/>
                 </Grid>
                 
-                <Button Text="About" 
-                        Clicked="AboutButton_OnClicked"/>
+                <Button Margin="0, 20"
+                        Text="About" 
+                        Clicked="AboutButton_OnClicked"
+                        FontFamily="Silkscreen"
+                        Background="#CDB4DB"
+                        FontSize="20"
+                        WidthRequest="200"/>
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>
