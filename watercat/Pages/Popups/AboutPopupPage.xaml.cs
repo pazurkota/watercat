@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Views;
 
-namespace watercat.Pages;
+namespace watercat.Pages.Popups;
 
 public partial class AboutPopupPage : Popup
 {

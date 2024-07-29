@@ -52,11 +52,25 @@
       <MauiXaml Update="Pages\MainPage.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
+      <MauiXaml Update="Pages\Popups\WaterPopupPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="Pages\Popups\AboutPopupPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>
       <Compile Update="Pages\MainPage.xaml.cs">
         <DependentUpon>MainPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Pages\Popups\WaterPopupPage.xaml.cs">
+        <DependentUpon>WaterPopupPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Pages\Popups\AboutPopupPage.xaml.cs">
+        <DependentUpon>AboutPopupPage.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
