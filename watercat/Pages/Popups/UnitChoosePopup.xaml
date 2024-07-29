@@ -3,8 +3,21 @@
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="watercat.Pages.Popups.UnitChoosePopup">
+             x:Class="watercat.Pages.Popups.UnitChoosePopup"
+             Color="Transparent">
     
-    
+    <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10"/>
+        </Border.StrokeShape>
+        
+        <VerticalStackLayout Spacing="10" Padding="20">
+            <Label Text="Choose unit:" 
+                   TextColor="#FFFFFF"
+                   FontFamily="PressStart2P"
+                   FontSize="16"
+                   HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+    </Border>
     
 </toolkit:Popup>

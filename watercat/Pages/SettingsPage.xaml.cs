@@ -14,4 +14,9 @@ public partial class SettingsPage : ContentPage
     {
         this.ShowPopup(new AboutPopupPage());
     }
+
+    private void ChooseUnit_OnClicked(object sender, EventArgs e)
+    {
+        this.ShowPopup(new UnitChoosePopup());
+    }
 }
