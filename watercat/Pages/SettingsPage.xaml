@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="watercat.Pages.SettingsPage"
+             BackgroundColor="#A2D2FF">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Spacing="10" Margin="20">
+                <Label Text="Settings:" 
+                       TextColor="#FFFFFF"
+                       FontFamily="PressStart2P"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                
+                <!-- Daily water goal settings -->
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
+                           Text="Daily Goal:"
+                           TextColor="#FFFFFF"
+                           FontSize="20"
+                           FontFamily="Silkscreen"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Entry Grid.Column="1"
+                           Keyboard="Numeric"
+                           TextColor="#FFFFFF"
+                           FontFamily="Silkscreen"/>
+                </Grid>
+                
+                <!-- Water unit settings -->
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
+                           Text="Units:"
+                           TextColor="#FFFFFF"
+                           FontSize="20"
+                           FontFamily="Silkscreen"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Button Grid.Column="1"
+                            Background="#CDB4DB"
+                            Text="Choose unit"
+                            FontSize="20"
+                            FontFamily="Silkscreen"
+                            TextColor="#FFFFFF"
+                            Clicked="ChooseUnit_OnClicked"/>
+                </Grid>
+                
+                <Button Margin="0, 20"
+                        Text="About" 
+                        Clicked="AboutButton_OnClicked"
+                        FontFamily="Silkscreen"
+                        Background="#CDB4DB"
+                        FontSize="20"
+                        WidthRequest="200"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
