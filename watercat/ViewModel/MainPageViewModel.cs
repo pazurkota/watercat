@@ -2,65 +2,48 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using watercat.Pages.Popups;
+using watercat.Services;
 
 namespace watercat.ViewModel;
 
 public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty] private int _waterIntake;
-    [ObservableProperty] private int _dailyWaterGoal;
+    [ObservableProperty] private int _dailyWaterGoal = 2500;
     [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
     [ObservableProperty] private string _appVersion;
 
-    private const string WaterIntakeKey = "WaterIntake"; // key for storing water intake
-    private const string LastUpdateDateKey = "LastUpdateDate"; // key for storing last update date
+    private readonly IWaterService _waterService;
 
     public MainPageViewModel()
     {
+    }
+
+    public MainPageViewModel(IWaterService waterService)
+    {
+        _waterService = waterService;
         Initialize();
     }
 
     [RelayCommand]
-    private void ShowPopUp()
-    {
-        Shell.Current.ShowPopup(new WaterPopupPage(this));
-    }
+    private void ShowPopUp() => Shell.Current.ShowPopup(new WaterPopupPage(this));
     
     private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
     
     public void AddWater(string waterAmount)
     {
-        WaterIntake += int.Parse(waterAmount);
+        _waterService.AddWater(int.Parse(waterAmount));
+        WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
         UpdateWaterSummary();
-        
-        // save current water stats
-        Preferences.Set(WaterIntakeKey, WaterIntake);
-        Preferences.Set(LastUpdateDateKey, DateTime.Today);
     }
 
     private void Initialize()
     {
-        DailyWaterGoal = 2500;
-        AppVersion = $"App version: v{VersionTracking.CurrentVersion}";
-        
-        var lastUpdate = Preferences.Get(LastUpdateDateKey, DateTime.MinValue);
-
-        // reset if new day
-        if (lastUpdate.Date != DateTime.Today) 
-        {
-            WaterIntake = 0;
-            Preferences.Set(WaterIntakeKey, 0);
-            Preferences.Set(LastUpdateDateKey, DateTime.Today);
-        }
-        else
-        {
-            WaterIntake = Preferences.Get(WaterIntakeKey, 0);
-        }
-        
-        UpdateWaterSummary();
+        WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
+        UpdateWaterSummary();
     }
     
     private string UpdateWaterImage()
@@ -80,6 +63,7 @@ public partial class MainPageViewModel : ObservableObject
     {
         WaterIntake = 0;
         UpdateWaterSummary();
+        _waterService.ResetWaterIntake();
         WaterImage = UpdateWaterImage();
     }
 }
