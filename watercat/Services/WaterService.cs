@@ -1,4 +1,6 @@
-﻿namespace watercat.Services;
+﻿using watercat.Models;
+
+namespace watercat.Services;
 
 public class WaterService : IWaterService
 {
@@ -27,5 +29,15 @@ public class WaterService : IWaterService
     {
         Preferences.Set(WaterIntakeKey, 0);
         Preferences.Set(LastUpdateDateKey, DateTime.Today);
+    }
+
+    public WaterUnit GetUnit()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetUnit(WaterUnit unit)
+    {
+        throw new NotImplementedException();
     }
 }
