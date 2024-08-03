@@ -6,6 +6,7 @@ public class WaterService : IWaterService
 {
     private const string WaterIntakeKey = "WaterIntake"; // key for storing water intake
     private const string LastUpdateDateKey = "LastUpdateDate"; // key for storing last update date
+    private const string WaterUnitKey = "WaterUnit"; // key for storing selected water unit
     
     public int GetWaterIntake()
     {
@@ -31,13 +32,7 @@ public class WaterService : IWaterService
         Preferences.Set(LastUpdateDateKey, DateTime.Today);
     }
 
-    public WaterUnit GetUnit()
-    {
-        throw new NotImplementedException();
-    }
+    public WaterUnit GetUnit() => (WaterUnit)Preferences.Get(WaterUnitKey, (int)WaterUnit.Milliliters);
 
-    public void SetUnit(WaterUnit unit)
-    {
-        throw new NotImplementedException();
-    }
+    public void SetUnit(WaterUnit unit) => Preferences.Set(WaterUnitKey, (int)unit);
 }
