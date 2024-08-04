@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using watercat.Models;
 using watercat.Pages.Popups;
 using watercat.Services;
 
@@ -13,6 +14,7 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
     [ObservableProperty] private string _appVersion;
+    [ObservableProperty] private WaterUnit _selectedUnit;
 
     private readonly IWaterService _waterService;
 
@@ -29,18 +31,22 @@ public partial class MainPageViewModel : ObservableObject
     [RelayCommand]
     private void ShowPopUp() => Shell.Current.ShowPopup(new WaterPopupPage(this));
     
-    private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
-    
-    public void AddWater(string waterAmount)
+    private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}{GetUnitSuffix(SelectedUnit)}/{DailyWaterGoal}{GetUnitSuffix(SelectedUnit)}";
+
+    private void Initialize()
     {
-        _waterService.AddWater(int.Parse(waterAmount));
+        SelectedUnit = _waterService.GetUnit();
         WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
         UpdateWaterSummary();
     }
-
-    private void Initialize()
+    
+    public void AddWater(string waterAmount)
     {
+        int amount = ConvertFromSelectedUnit(int.Parse(waterAmount));
+        _waterService.AddWater(amount);
+        WaterIntake = amount;
+        SelectedUnit = _waterService.GetUnit();
         WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
         UpdateWaterSummary();
@@ -65,5 +71,26 @@ public partial class MainPageViewModel : ObservableObject
         UpdateWaterSummary();
         _waterService.ResetWaterIntake();
         WaterImage = UpdateWaterImage();
+    }
+    
+    private int ConvertFromSelectedUnit(int amount)
+    {
+        return SelectedUnit switch
+        {
+            WaterUnit.OuncesUs => (int)(amount * 29.5735),
+            WaterUnit.OuncesUk => (int)(amount * 28.4131),
+            _ => amount
+        };
+    }
+
+    private string GetUnitSuffix(WaterUnit unit)
+    {
+        return unit switch
+        {
+            WaterUnit.Milliliters => "ml",
+            WaterUnit.OuncesUs => "oz (US)",
+            WaterUnit.OuncesUk => "oz (UK)",
+            _ => "ml"
+        };
     }
 }
