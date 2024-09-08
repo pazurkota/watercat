@@ -29,21 +29,15 @@ public partial class MainPageViewModel : ObservableObject
     [RelayCommand]
     private void ShowPopUp() => Shell.Current.ShowPopup(new WaterPopupPage(this));
     
-    private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
-    
     public void AddWater(string waterAmount)
     {
         _waterService.AddWater(int.Parse(waterAmount));
-        WaterIntake = _waterService.GetWaterIntake();
-        WaterImage = UpdateWaterImage();
-        UpdateWaterSummary();
+        UpdateData();
     }
 
     private void Initialize()
     {
-        WaterIntake = _waterService.GetWaterIntake();
-        WaterImage = UpdateWaterImage();
-        UpdateWaterSummary();
+        UpdateData();
     }
     
     private string UpdateWaterImage()
@@ -61,9 +55,14 @@ public partial class MainPageViewModel : ObservableObject
     [RelayCommand] // reset water stats
     private void ResetWaterIntake() 
     {
-        WaterIntake = 0;
-        UpdateWaterSummary();
         _waterService.ResetWaterIntake();
+        UpdateData();
+    }
+
+    private void UpdateData()
+    {
+        WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
+        WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
     }
 }
