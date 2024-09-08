@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using watercat.Model;
 using watercat.Pages.Popups;
 using watercat.Services;
 
@@ -12,17 +13,20 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty] private int _dailyWaterGoal = 2500;
     [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
+    [ObservableProperty] private string _waterUnit;
     [ObservableProperty] private string _appVersion;
 
     private readonly IWaterService _waterService;
+    private readonly IUnitService _unitService;
 
     public MainPageViewModel()
     {
     }
 
-    public MainPageViewModel(IWaterService waterService)
+    public MainPageViewModel(IWaterService waterService, IUnitService unitService)
     {
         _waterService = waterService;
+        _unitService = unitService;
         Initialize();
     }
 
@@ -63,6 +67,17 @@ public partial class MainPageViewModel : ObservableObject
     {
         WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
-        WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
+        WaterSummary = $"{WaterIntake} {ParseUnit()}/{DailyWaterGoal} {ParseUnit()}";
+    }
+    
+    private string ParseUnit()
+    {
+        return _unitService.GetUnit() switch
+        {
+            WaterUnits.Millilitres => "ml",
+            WaterUnits.OuncesUk => "oz (UK)",
+            WaterUnits.OuncesUs => "oz (US)",
+            _ => throw new ArgumentOutOfRangeException(nameof(WaterUnits), _unitService.GetUnit(), null)
+        };
     }
 }
