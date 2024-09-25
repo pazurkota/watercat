@@ -21,17 +21,20 @@
             <Button Text="Milliliters"
                     FontFamily="Silkscreen"
                     BackgroundColor="#BDE0FE"
-                    CommandParameter="180"/>
+                    CommandParameter="180"
+                    Clicked="Button_SetMilliliters"/>
         
             <Button Text="Ounce (US)"
                     FontFamily="Silkscreen"
                     BackgroundColor="#BDE0FE"
-                    CommandParameter="250"/>
+                    CommandParameter="250"
+                    Clicked="Button_SetOuncesUs"/>
         
             <Button Text="Ounce (UK)"
                     FontFamily="Silkscreen"
                     BackgroundColor="#BDE0FE"
-                    CommandParameter="500"/>
+                    CommandParameter="500"
+                    Clicked="Button_SetOuncesUk"/>
         </VerticalStackLayout>
     </Border>
     
