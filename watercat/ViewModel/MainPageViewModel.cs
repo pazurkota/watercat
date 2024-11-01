@@ -67,16 +67,10 @@ public partial class MainPageViewModel : ObservableObject
     {
         WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
-        WaterSummary = $"{WaterIntake} {ParseUnit()}/{DailyWaterGoal} {ParseUnit()}";
-    }
-    
-    private string ParseUnit()
-    {
-        return _unitService.GetUnit() switch
-        {
-            WaterUnits.Millilitres => "ml",
-            WaterUnits.Ounces => "oz",
-            _ => throw new ArgumentOutOfRangeException(nameof(WaterUnits), _unitService.GetUnit(), null)
-        };
+
+        string waterIntake = $"{ConvertWaterByUnit.ConvertUnits(_unitService.GetUnit(), $"{WaterIntake}")}";
+        string dailyGoal = $"{ConvertWaterByUnit.ConvertUnits(_unitService.GetUnit(), $"{DailyWaterGoal}")}";
+        
+        WaterSummary = $"{waterIntake}/{dailyGoal}";
     }
 }

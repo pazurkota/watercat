@@ -4,7 +4,7 @@ namespace watercat.Services;
 
 public static class ConvertWaterByUnit
 {
-    public static string ConvertButtonUnits(WaterUnits unit, string value)
+    public static string ConvertUnits(WaterUnits unit, string value)
     {
         return unit switch
         {
