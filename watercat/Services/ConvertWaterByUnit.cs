@@ -1,0 +1,17 @@
+﻿using watercat.Model;
+
+namespace watercat.Services;
+
+public static class ConvertWaterByUnit
+{
+    public static string ConvertButtonUnits(WaterUnits unit, string value)
+    {
+        return unit switch
+        {
+            WaterUnits.Millilitres => $"{value} ml",
+            WaterUnits.OuncesUk => $"{Math.Round(int.Parse(value) / 28.4, 0) } oz",
+            WaterUnits.OuncesUs => $"{Math.Round(int.Parse(value) / 29.6, 0) } oz",
+            _ => $"{value} ml"
+        };
+    }
+}

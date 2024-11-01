@@ -24,19 +24,19 @@
                        TextColor="#FFFFFF"
                        HorizontalTextAlignment="Center"/>
         
-                <Button Text="180ml"
+                <Button Text="{Binding FirstButton}"
                         FontFamily="Silkscreen"
                         BackgroundColor="#BDE0FE"
                         Command="{Binding AddWaterCommand}"
                         CommandParameter="180"/>
         
-                <Button Text="250ml"
+                <Button Text="{Binding SecondButton}"
                         FontFamily="Silkscreen"
                         BackgroundColor="#BDE0FE"
                         Command="{Binding AddWaterCommand}"
                         CommandParameter="250"/>
         
-                <Button Text="500ml"
+                <Button Text="{Binding ThirdButton}"
                         FontFamily="Silkscreen"
                         BackgroundColor="#BDE0FE"
                         Command="{Binding AddWaterCommand}"
