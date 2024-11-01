@@ -9,8 +9,7 @@ public static class ConvertWaterByUnit
         return unit switch
         {
             WaterUnits.Millilitres => $"{value} ml",
-            WaterUnits.OuncesUk => $"{Math.Round(int.Parse(value) / 28.4, 0) } oz",
-            WaterUnits.OuncesUs => $"{Math.Round(int.Parse(value) / 29.6, 0) } oz",
+            WaterUnits.Ounces => $"{Math.Round(int.Parse(value) / 28.4, 0) } oz",
             _ => $"{value} ml"
         };
     }

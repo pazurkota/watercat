@@ -6,7 +6,7 @@
              x:Class="watercat.Pages.Popups.UnitChoosePopup"
              Color="Transparent">
     
-    <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="230" WidthRequest="250">
+    <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="180" WidthRequest="250">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="10"/>
         </Border.StrokeShape>
@@ -24,17 +24,11 @@
                     CommandParameter="180"
                     Clicked="Button_SetMilliliters"/>
         
-            <Button Text="Ounce (US)"
+            <Button Text="Ounce"
                     FontFamily="Silkscreen"
                     BackgroundColor="#BDE0FE"
                     CommandParameter="250"
-                    Clicked="Button_SetOuncesUs"/>
-        
-            <Button Text="Ounce (UK)"
-                    FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"
-                    CommandParameter="500"
-                    Clicked="Button_SetOuncesUk"/>
+                    Clicked="Button_SetOunces"/>
         </VerticalStackLayout>
     </Border>
     

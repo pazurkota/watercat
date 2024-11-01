@@ -3,6 +3,5 @@
 public enum WaterUnits
 {
     Millilitres, 
-    OuncesUk, 
-    OuncesUs
+    Ounces
 }

@@ -75,8 +75,7 @@ public partial class MainPageViewModel : ObservableObject
         return _unitService.GetUnit() switch
         {
             WaterUnits.Millilitres => "ml",
-            WaterUnits.OuncesUk => "oz (UK)",
-            WaterUnits.OuncesUs => "oz (US)",
+            WaterUnits.Ounces => "oz",
             _ => throw new ArgumentOutOfRangeException(nameof(WaterUnits), _unitService.GetUnit(), null)
         };
     }
