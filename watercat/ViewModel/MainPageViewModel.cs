@@ -63,7 +63,7 @@ public partial class MainPageViewModel : ObservableObject
         UpdateData();
     }
 
-    private void UpdateData()
+    public void UpdateData()
     {
         WaterIntake = _waterService.GetWaterIntake();
         WaterImage = UpdateWaterImage();
