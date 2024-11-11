@@ -1,22 +1,22 @@
 ﻿using CommunityToolkit.Maui.Views;
 using watercat.Pages.Popups;
+using watercat.ViewModel;
 
 namespace watercat.Pages;
 
 public partial class SettingsPage : ContentPage
 {
-    public SettingsPage()
+    public SettingsPage(SettingsPageViewModel _viewModel)
     {
         InitializeComponent();
+        BindingContext = _viewModel;
     }
 
-    private void AboutButton_OnClicked(object sender, EventArgs e)
+    private void Entry_OnCompleted(object sender, EventArgs e)
     {
-        this.ShowPopup(new AboutPopupPage());
-    }
-
-    private void ChooseUnit_OnClicked(object sender, EventArgs e)
-    {
-        this.ShowPopup(new UnitChoosePopup());
+        if (sender is Entry entry && BindingContext is SettingsPageViewModel viewModel)
+        {
+            viewModel.SetNewWaterGoalCommand.Execute(int.Parse(entry.Text));
+        }
     }
 }

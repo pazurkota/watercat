@@ -31,7 +31,8 @@
                     <Entry Grid.Column="1"
                            Keyboard="Numeric"
                            TextColor="#FFFFFF"
-                           FontFamily="Silkscreen"/>
+                           FontFamily="Silkscreen"
+                           Completed="Entry_OnCompleted"/>
                 </Grid>
                 
                 <!-- Water unit settings -->
