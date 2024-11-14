@@ -72,7 +72,7 @@ public partial class MainPageViewModel : ObservableObject
         DailyWaterGoal = _waterService.GetDailyGoal(); // depend on selected unit
         WaterImage = UpdateWaterImage();
 
-        string waterIntake = $"{ConvertWaterByUnit.ConvertUnits(_unitService.GetUnit(), WaterIntake)}";
+        string waterIntake = $"{_unitConverter.ConvertUnit(_unitService.GetUnit(), WaterIntake)}";
         
         WaterSummary = $"{waterIntake}/{DailyWaterGoal}";
     }

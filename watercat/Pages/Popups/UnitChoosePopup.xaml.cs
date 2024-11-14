@@ -23,6 +23,8 @@ public partial class UnitChoosePopup : Popup
         double convertedGoal = _unitConverter.ConvertToMl(dailyGoal);
         
         _waterService.SetDailyGoal((int) convertedGoal);
+        
+        Close();
     }
 
     private void Button_SetOunces(object sender, EventArgs e)
@@ -33,5 +35,7 @@ public partial class UnitChoosePopup : Popup
         double convertedGoal = _unitConverter.ConvertToOz(dailyGoal);
         
         _waterService.SetDailyGoal((int) convertedGoal);
+        
+        Close();
     }
 }

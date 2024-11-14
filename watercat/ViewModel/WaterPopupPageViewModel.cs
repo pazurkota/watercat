@@ -1,28 +1,31 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using watercat.Model;
 using watercat.Services;
 
 namespace watercat.ViewModel;
 
 public partial class WaterPopupPageViewModel : ObservableObject
 {
-    private readonly MainPageViewModel _mainPageViewModel;
-    private readonly Action _closePopupAction;
-    
     [ObservableProperty] private string firstButton;
     [ObservableProperty] private string secondButton;
     [ObservableProperty] private string thirdButton;
+    
+    private readonly MainPageViewModel _mainPageViewModel;
+    private readonly IUnitService _unitService = new UnitService();
+    private readonly IWaterUnitConverter _unitConverter = new WaterUnitConverter();
+    private readonly Action _closePopupAction;
 
     public WaterPopupPageViewModel(MainPageViewModel mainViewModel, Action closePopup)
     {
         _mainPageViewModel = mainViewModel;
         _closePopupAction = closePopup;
-        
-        var unitService = new UnitService();
-        
-        FirstButton = ConvertWaterByUnit.ConvertUnits(unitService.GetUnit(), "180");
-        SecondButton = ConvertWaterByUnit.ConvertUnits(unitService.GetUnit(), "250");
-        ThirdButton = ConvertWaterByUnit.ConvertUnits(unitService.GetUnit(), "500");
+
+        WaterUnits unit = _unitService.GetUnit();
+
+        FirstButton = $"{_unitConverter.ConvertUnit(unit, 180)}";
+        SecondButton = $"{_unitConverter.ConvertUnit(unit, 250)}";
+        ThirdButton = $"{_unitConverter.ConvertUnit(unit, 500)}";
     }
 
     public WaterPopupPageViewModel()
