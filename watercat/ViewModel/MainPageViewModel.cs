@@ -18,15 +18,18 @@ public partial class MainPageViewModel : ObservableObject
 
     private readonly IWaterService _waterService;
     private readonly IUnitService _unitService;
+    private readonly IWaterUnitConverter _unitConverter;
 
     public MainPageViewModel()
     {
     }
 
-    public MainPageViewModel(IWaterService waterService, IUnitService unitService)
+    public MainPageViewModel(IWaterService waterService, IUnitService unitService, IWaterUnitConverter unitConverter)
     {
         _waterService = waterService;
         _unitService = unitService;
+        _unitConverter = unitConverter;
+        
         Initialize();
     }
 
@@ -46,7 +49,7 @@ public partial class MainPageViewModel : ObservableObject
     
     private string UpdateWaterImage()
     {
-        var percentage = (double)WaterIntake / DailyWaterGoal;
+        var percentage = ConvertUnit(WaterIntake) / DailyWaterGoal;
         
         // 10% increment
         var index = (int)(percentage * 10);
@@ -66,11 +69,22 @@ public partial class MainPageViewModel : ObservableObject
     public void UpdateData()
     {
         WaterIntake = _waterService.GetWaterIntake();
-        WaterImage = UpdateWaterImage();
         DailyWaterGoal = _waterService.GetDailyGoal(); // depend on selected unit
+        WaterImage = UpdateWaterImage();
 
         string waterIntake = $"{ConvertWaterByUnit.ConvertUnits(_unitService.GetUnit(), WaterIntake)}";
         
         WaterSummary = $"{waterIntake}/{DailyWaterGoal}";
+    }
+
+    private double ConvertUnit(double value)
+    {
+        WaterUnits unit = _unitService.GetUnit();
+
+        return unit switch
+        {
+            WaterUnits.Ounces => _unitConverter.ConvertToOz(value),
+            _ => value
+        };
     }
 }
