@@ -4,6 +4,7 @@ public class WaterService : IWaterService
 {
     private const string WaterIntakeKey = "WaterIntake"; // key for storing water intake
     private const string LastUpdateDateKey = "LastUpdateDate"; // key for storing last update date
+    private const string SetNewGoalKey = "DailyWaterGoal"; // key for storing user daily water goal
     
     public int GetWaterIntake()
     {
@@ -27,5 +28,15 @@ public class WaterService : IWaterService
     {
         Preferences.Set(WaterIntakeKey, 0);
         Preferences.Set(LastUpdateDateKey, DateTime.Today);
+    }
+
+    public void SetDailyGoal(int newGoal)
+    {
+        Preferences.Set(SetNewGoalKey, newGoal);
+    }
+
+    public int GetDailyGoal()
+    {
+        return Preferences.Get(SetNewGoalKey, 2000);
     }
 }
