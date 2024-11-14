@@ -1,4 +1,6 @@
-﻿namespace watercat.Services;
+﻿using watercat.Model;
+
+namespace watercat.Services;
 
 public class WaterUnitConverter : IWaterUnitConverter
 {
@@ -10,5 +12,14 @@ public class WaterUnitConverter : IWaterUnitConverter
     public double ConvertToMl(double ounces)
     {
         return Math.Round(ounces * 29.5735, 0);
+    }
+
+    public double ConvertUnit(WaterUnits unit, double value)
+    {
+        return unit switch
+        {
+            WaterUnits.Ounces => ConvertToOz(value),
+            _ => value
+        };
     }
 }
