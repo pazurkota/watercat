@@ -7,7 +7,7 @@ A simple and cool mobile app to track water drinking!
 
 ---
 
-![](https://cdn.discordapp.com/attachments/973144983429316689/1266055588337422459/watercat_readme_image.png?ex=66a3c1a6&is=66a27026&hm=7bf33e3c5d0e4ab8388ed97dee770e6ed4175b94541656f3e45ea8eaae323eed&)
+![](watercat_readme_image.png)
 
 ---
 
@@ -81,13 +81,12 @@ Pull requests are always welcome! For major changes, please open an issue first 
 
 ### Support
 
-If you encounter any bug, have any idea, or have similar issue, open issue first and describe your problem.
+If you encounter a bug, have a suggestion, or experience a similar issue, please open a new issue and provide a detailed description. When filling out the issue form:
 
-In issues form:
-- Describe, what kind of problem is it (e.g: bug or feature request)
-- Describe target platform (Android or iOS)
-- Describe problem more precisely
-- If it's a bug, show steps on how to replicate it
+- Specify the nature of the issue (e.g., bug, feature request).
+- Indicate the target platform (Android or iOS).
+- Describe the problem in detail.
+- For bugs, provide step-by-step instructions to reproduce the issue.
 
 ---
 
