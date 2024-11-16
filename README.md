@@ -7,7 +7,7 @@ A simple and cool mobile app to track water drinking!
 
 ---
 
-![](https://cdn.discordapp.com/attachments/973144983429316689/1266055588337422459/watercat_readme_image.png?ex=66a3c1a6&is=66a27026&hm=7bf33e3c5d0e4ab8388ed97dee770e6ed4175b94541656f3e45ea8eaae323eed&)
+![](watercat_readme_image.png)
 
 ---
 
