@@ -23,9 +23,9 @@ public partial class WaterPopupPageViewModel : ObservableObject
 
         WaterUnits unit = _unitService.GetUnit();
 
-        FirstButton = $"{_unitConverter.ConvertUnit(unit, 180)}";
-        SecondButton = $"{_unitConverter.ConvertUnit(unit, 250)}";
-        ThirdButton = $"{_unitConverter.ConvertUnit(unit, 500)}";
+        FirstButton = $"{_unitConverter.ConvertUnit(unit, 180)} {_unitService.UnitPrefix(unit)}";
+        SecondButton = $"{_unitConverter.ConvertUnit(unit, 250)} {_unitService.UnitPrefix(unit)}";
+        ThirdButton = $"{_unitConverter.ConvertUnit(unit, 500)} {_unitService.UnitPrefix(unit)}";
     }
 
     public WaterPopupPageViewModel()
