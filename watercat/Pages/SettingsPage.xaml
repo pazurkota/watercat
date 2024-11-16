@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:watercat.Pages"
+             xmlns:viewmodel="clr-namespace:watercat.ViewModel"
+             x:Class="watercat.Pages.SettingsPage"
+             BackgroundColor="#A2D2FF">
+    <ContentPage.BindingContext>
+        <viewmodel:SettingsPageViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Spacing="10" Margin="20">
+                <Label Text="Settings:" 
+                       TextColor="#FFFFFF"
+                       FontFamily="PressStart2P"
+                       FontSize="20"
+                       HorizontalTextAlignment="Center"/>
+                
+                <!-- Daily water goal settings -->
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
+                           Text="Daily Goal:"
+                           TextColor="#FFFFFF"
+                           FontSize="20"
+                           FontFamily="Silkscreen"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Entry Grid.Column="1"
+                           Keyboard="Numeric"
+                           TextColor="#FFFFFF"
+                           FontFamily="Silkscreen"
+                           Completed="Entry_OnCompleted"/>
+                </Grid>
+                
+                <!-- Water unit settings -->
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
+                           Text="Units:"
+                           TextColor="#FFFFFF"
+                           FontSize="20"
+                           FontFamily="Silkscreen"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Button Grid.Column="1"
+                            Background="#CDB4DB"
+                            Text="Choose unit"
+                            FontSize="20"
+                            FontFamily="Silkscreen"
+                            TextColor="#FFFFFF"
+                            Command="{Binding ShowUnitsChoosePopupCommand}"/>
+                </Grid>
+                
+                <Button Margin="0, 20"
+                        Text="About" 
+                        FontFamily="Silkscreen"
+                        Background="#CDB4DB"
+                        FontSize="20"
+                        WidthRequest="200"
+                        Command="{Binding ShowAboutPopupCommand}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

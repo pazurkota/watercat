@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using watercat.Pages;
+using watercat.Services;
 using watercat.ViewModel;
 
 namespace watercat;
@@ -25,6 +26,13 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
+
+        builder.Services.AddSingleton<SettingsPage>();
+        builder.Services.AddSingleton<SettingsPageViewModel>();
+        
+        builder.Services.AddSingleton<IWaterService, WaterService>();
+        builder.Services.AddSingleton<IUnitService, UnitService>();
+        builder.Services.AddSingleton<IWaterUnitConverter, WaterUnitConverter>();
         
         return builder.Build();
     }

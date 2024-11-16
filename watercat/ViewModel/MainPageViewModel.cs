@@ -1,71 +1,55 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using watercat.Pages;
+using watercat.Model;
+using watercat.Pages.Popups;
+using watercat.Services;
 
 namespace watercat.ViewModel;
 
 public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty] private int _waterIntake;
-    [ObservableProperty] private int _dailyWaterGoal;
+    [ObservableProperty] private int _dailyWaterGoal = 2500;
     [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
+    [ObservableProperty] private string _waterUnit;
     [ObservableProperty] private string _appVersion;
 
-    private const string WaterIntakeKey = "WaterIntake"; // key for storing water intake
-    private const string LastUpdateDateKey = "LastUpdateDate"; // key for storing last update date
+    private readonly IWaterService _waterService;
+    private readonly IUnitService _unitService;
+    private readonly IWaterUnitConverter _unitConverter;
 
     public MainPageViewModel()
     {
+    }
+
+    public MainPageViewModel(IWaterService waterService, IUnitService unitService, IWaterUnitConverter unitConverter)
+    {
+        _waterService = waterService;
+        _unitService = unitService;
+        _unitConverter = unitConverter;
+        
         Initialize();
     }
 
     [RelayCommand]
-    private void ShowPopUp()
-    {
-        Shell.Current.ShowPopup(new WaterPopupPage(this));
-    }
-    
-    private void UpdateWaterSummary() => WaterSummary = $"{WaterIntake}ml/{DailyWaterGoal}ml";
+    private void ShowPopUp() => Shell.Current.ShowPopup(new WaterPopupPage(this));
     
     public void AddWater(string waterAmount)
     {
-        WaterIntake += int.Parse(waterAmount);
-        WaterImage = UpdateWaterImage();
-        UpdateWaterSummary();
-        
-        // save current water stats
-        Preferences.Set(WaterIntakeKey, WaterIntake);
-        Preferences.Set(LastUpdateDateKey, DateTime.Today);
+        _waterService.AddWater(int.Parse(waterAmount));
+        UpdateData();
     }
 
     private void Initialize()
     {
-        DailyWaterGoal = 2500;
-        AppVersion = $"App version: v{VersionTracking.CurrentVersion}";
-        
-        var lastUpdate = Preferences.Get(LastUpdateDateKey, DateTime.MinValue);
-
-        // reset if new day
-        if (lastUpdate.Date != DateTime.Today) 
-        {
-            WaterIntake = 0;
-            Preferences.Set(WaterIntakeKey, 0);
-            Preferences.Set(LastUpdateDateKey, DateTime.Today);
-        }
-        else
-        {
-            WaterIntake = Preferences.Get(WaterIntakeKey, 0);
-        }
-        
-        UpdateWaterSummary();
-        WaterImage = UpdateWaterImage();
+        UpdateData();
     }
     
     private string UpdateWaterImage()
     {
-        var percentage = (double)WaterIntake / DailyWaterGoal;
+        var percentage = ConvertUnit(WaterIntake) / DailyWaterGoal;
         
         // 10% increment
         var index = (int)(percentage * 10);
@@ -78,8 +62,30 @@ public partial class MainPageViewModel : ObservableObject
     [RelayCommand] // reset water stats
     private void ResetWaterIntake() 
     {
-        WaterIntake = 0;
-        UpdateWaterSummary();
+        _waterService.ResetWaterIntake();
+        UpdateData();
+    }
+
+    public void UpdateData()
+    {
+        WaterIntake = _waterService.GetWaterIntake();
+        DailyWaterGoal = _waterService.GetDailyGoal(); // depend on selected unit
         WaterImage = UpdateWaterImage();
+        WaterUnits unit = _unitService.GetUnit();
+
+        string waterIntake = $"{_unitConverter.ConvertUnit(_unitService.GetUnit(), WaterIntake)}";
+        
+        WaterSummary = $"{waterIntake} {_unitService.UnitPrefix(unit)}/{DailyWaterGoal} {_unitService.UnitPrefix(unit)}";
+    }
+
+    private double ConvertUnit(double value)
+    {
+        WaterUnits unit = _unitService.GetUnit();
+
+        return unit switch
+        {
+            WaterUnits.Ounces => _unitConverter.ConvertToOz(value),
+            _ => value
+        };
     }
 }
