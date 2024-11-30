@@ -7,14 +7,14 @@
     Shell.FlyoutBehavior="Disabled">
     
     <TabBar>
-        <Tab Title="Weekly Stats">
-            <ShellContent ContentTemplate="{DataTemplate pages:WaterStatsPage}"/>
-        </Tab>
         <Tab Title="Settings">
-            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"></ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
         </Tab>
         <Tab Title="Main Page">
-            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}"></ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
+        </Tab>
+        <Tab Title="Weekly Stats">
+            <ShellContent ContentTemplate="{DataTemplate pages:WaterStatsPage}"/>
         </Tab>
     </TabBar>
     
