@@ -1,4 +1,6 @@
-﻿namespace watercat.Model;
+﻿using System;
+
+namespace watercat.Model;
 
 public class DailyWaterIntake
 {

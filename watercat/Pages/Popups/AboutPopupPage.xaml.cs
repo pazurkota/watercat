@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Maui.Views;
+﻿using System;
+using CommunityToolkit.Maui.Views;
+using Microsoft.Maui.ApplicationModel;
 
 namespace watercat.Pages.Popups;
 

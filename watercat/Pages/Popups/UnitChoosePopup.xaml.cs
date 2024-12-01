@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Views;
+﻿using System;
+using CommunityToolkit.Maui.Views;
 using watercat.Model;
 using watercat.Services;
 

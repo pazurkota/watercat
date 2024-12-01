@@ -1,4 +1,6 @@
-﻿namespace watercat;
+﻿using Microsoft.Maui.Controls;
+
+namespace watercat;
 
 public partial class App : Application
 {
