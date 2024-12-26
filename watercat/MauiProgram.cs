@@ -24,6 +24,8 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
+        builder.Services.AddSingleton<DailyIntakeDbService>();
+        
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
 
