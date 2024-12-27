@@ -13,6 +13,9 @@
         <Tab Title="Main Page">
             <ShellContent ContentTemplate="{DataTemplate pages:MainPage}"></ShellContent>
         </Tab>
+        <Tab Title="Weekly Stats">
+            <ShellContent ContentTemplate="{DataTemplate pages:WeeklyStats}"></ShellContent>
+        </Tab>
     </TabBar>
     
 </Shell>
