@@ -3,7 +3,7 @@ using watercat.Model;
 
 namespace watercat.Services;
 
-public class DailyIntakeDbService
+public class DailyIntakeDbService : IDailyIntakeDbService
 {
     private const string DbName = "daily_intake_db.db3";
     private readonly SQLiteAsyncConnection _connection;
