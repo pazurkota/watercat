@@ -30,10 +30,11 @@ public class WaterService : IWaterService
         await UpdateDailyIntake(currentIntake);
     }
 
-    public void ResetWaterIntake()
+    public async void ResetWaterIntake()
     {
         Preferences.Set(WaterIntakeKey, 0);
         Preferences.Set(LastUpdateDateKey, DateTime.Today);
+        await UpdateDailyIntake(0);
     }
 
     public void SetDailyGoal(int newGoal)
