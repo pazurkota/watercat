@@ -38,4 +38,13 @@ public class DailyIntakeDbService : IDailyIntakeDbService
     {
         await _connection.DeleteAsync(intake);
     }
+    
+    public async Task<List<DailyWaterIntake>> GetWeeklyIntakes()
+    {
+        var sevenDaysAgo = DateTime.Today.AddDays(-7);
+        return await _connection.Table<DailyWaterIntake>()
+            .Where(x => x.Date >= sevenDaysAgo)
+            .OrderBy(x => x.Date)
+            .ToListAsync();
+    }
 }

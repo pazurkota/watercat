@@ -9,4 +9,5 @@ public interface IDailyIntakeDbService
     Task Create(DailyWaterIntake intake);
     Task Update(DailyWaterIntake intake);
     Task Delete(DailyWaterIntake intake);
+    Task<List<DailyWaterIntake>> GetWeeklyIntakes();
 }
