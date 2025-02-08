@@ -31,6 +31,9 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<SettingsPage>();
         builder.Services.AddSingleton<SettingsPageViewModel>();
+
+        builder.Services.AddSingleton<WeeklyStatsPage>();
+        builder.Services.AddSingleton<WeeklyStatsPageViewModel>();
         
         builder.Services.AddSingleton<IWaterService, WaterService>();
         builder.Services.AddSingleton<IUnitService, UnitService>();
