@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="watercat.Pages.WeeklyStatsPage">
     <StackLayout>
-        <ListView x:Name="WeeklyStatsListView">
+        <ListView x:Name="WeeklyStatsListView" ItemsSource="{Binding WeeklyIntakes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Date}" Detail="{Binding Intake}" />

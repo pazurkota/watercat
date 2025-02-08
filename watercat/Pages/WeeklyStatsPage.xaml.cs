@@ -1,28 +1,20 @@
-﻿using watercat.Services;
-using watercat.ViewModel;
+﻿using watercat.ViewModel;
 
 namespace watercat.Pages;
 
 public partial class WeeklyStatsPage : ContentPage
 {
-    private readonly IDailyIntakeDbService _intakeDbService = new DailyIntakeDbService();
+    private readonly WeeklyStatsPageViewModel _viewModel;
     
-    public WeeklyStatsPage(WeeklyStatsPageViewModel _viewModel)
+    public WeeklyStatsPage(WeeklyStatsPageViewModel viewModel)
     {
         InitializeComponent();
-        LoadWeeklyStats();
+        _viewModel = viewModel;
         BindingContext = _viewModel;
     }
 
     protected override void OnAppearing()
     {
-        LoadWeeklyStats();
-    }
-
-    private async void LoadWeeklyStats()
-    {
-        var weeklyIntakes = await _intakeDbService.GetWeeklyIntakes();
-        // Assuming you have a ListView or some UI element to display the data
-        WeeklyStatsListView.ItemsSource = weeklyIntakes;
+        _viewModel.LoadWeeklyStats();
     }
 }
