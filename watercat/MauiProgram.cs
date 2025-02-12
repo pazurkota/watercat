@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Maui;
+using LiveChartsCore.SkiaSharpView.Maui;
 using Microsoft.Extensions.Logging;
 using watercat.Pages;
 using watercat.Services;
 using watercat.ViewModel;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace watercat;
 
@@ -14,6 +16,8 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
+            .UseSkiaSharp()
+            .UseLiveCharts()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Silkscreen-Regular.ttf", "Silkscreen");
