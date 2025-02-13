@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using watercat.Model;
 using watercat.Services;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
 
 namespace watercat.ViewModel;
 
@@ -11,6 +13,9 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
 
     [ObservableProperty]
     private ObservableCollection<DailyWaterIntake> _weeklyIntakes;
+
+    [ObservableProperty]
+    private ISeries[] _series;
 
     public WeeklyStatsPageViewModel()
     {
@@ -22,9 +27,17 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
     {
         var intakes = await _intakeDbService.GetWeeklyIntakes();
         WeeklyIntakes.Clear();
+        var seriesData = new List<double>();
+
         foreach (var intake in intakes)
         {
             WeeklyIntakes.Add(intake);
+            seriesData.Add(intake.Intake);
         }
+
+        Series =
+        [
+            new ColumnSeries<double>(seriesData)
+        ];
     }
 }
