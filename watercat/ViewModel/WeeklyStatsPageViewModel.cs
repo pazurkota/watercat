@@ -47,7 +47,8 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
         {
             new ColumnSeries<double>
             {
-                Values = seriesData
+                Values = seriesData,
+                Fill = new SolidColorPaint(SKColors.Olive)
             }
         };
 

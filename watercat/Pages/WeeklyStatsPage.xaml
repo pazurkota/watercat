@@ -3,6 +3,11 @@
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              x:Class="watercat.Pages.WeeklyStatsPage">
     <StackLayout Spacing="25">
+        <Label Text="Your water stats:"
+               HorizontalTextAlignment="Center"
+               FontFamily="PressStart2P"
+               Padding="15"/>
+        
         <ListView x:Name="WeeklyStatsListView" ItemsSource="{Binding WeeklyIntakes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -14,7 +19,8 @@
         <lvc:CartesianChart
             Series="{Binding Series}"
             XAxes="{Binding XAxes}"
-            HeightRequest="250">
+            HeightRequest="250"
+            EasingFunction="{x:Null}">
         </lvc:CartesianChart>
     </StackLayout>
 </ContentPage>
