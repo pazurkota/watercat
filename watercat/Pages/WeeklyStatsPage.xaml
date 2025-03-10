@@ -7,14 +7,15 @@
                HorizontalTextAlignment="Center"
                FontFamily="PressStart2P"
                Padding="15"/>
-        
+
         <lvc:CartesianChart
             Series="{Binding Series}"
             XAxes="{Binding XAxes}"
+            YAxes="{Binding YAxes}"
             HeightRequest="350"
             EasingFunction="{x:Null}">
         </lvc:CartesianChart>
-        
+
         <ListView x:Name="WeeklyStatsListView" ItemsSource="{Binding WeeklyIntakes}">
             <ListView.ItemTemplate>
                 <DataTemplate>

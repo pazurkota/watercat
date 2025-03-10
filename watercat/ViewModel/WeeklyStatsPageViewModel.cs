@@ -23,6 +23,9 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
     [ObservableProperty]
     private Axis[] _xAxes;
 
+    [ObservableProperty]
+    private Axis[] _yAxes;
+
     public WeeklyStatsPageViewModel()
     {
         _weeklyIntakes = new ObservableCollection<DailyWaterIntake>();
@@ -62,6 +65,14 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
                 Name = "Date",
                 NameTextSize = 14,
                 NamePaint = new SolidColorPaint(SKColors.Black)
+            }
+        };
+
+        YAxes = new Axis[]
+        {
+            new Axis
+            {
+                MinLimit = 0
             }
         };
     }
