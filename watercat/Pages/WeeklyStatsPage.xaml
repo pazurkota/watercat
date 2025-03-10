@@ -8,6 +8,13 @@
                FontFamily="PressStart2P"
                Padding="15"/>
         
+        <lvc:CartesianChart
+            Series="{Binding Series}"
+            XAxes="{Binding XAxes}"
+            HeightRequest="350"
+            EasingFunction="{x:Null}">
+        </lvc:CartesianChart>
+        
         <ListView x:Name="WeeklyStatsListView" ItemsSource="{Binding WeeklyIntakes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -15,12 +22,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-        <lvc:CartesianChart
-            Series="{Binding Series}"
-            XAxes="{Binding XAxes}"
-            HeightRequest="250"
-            EasingFunction="{x:Null}">
-        </lvc:CartesianChart>
     </StackLayout>
 </ContentPage>
