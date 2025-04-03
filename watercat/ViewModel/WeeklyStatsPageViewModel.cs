@@ -13,6 +13,8 @@ namespace watercat.ViewModel;
 public partial class WeeklyStatsPageViewModel : ObservableObject
 {
     private readonly IDailyIntakeDbService _intakeDbService = new DailyIntakeDbService();
+    private readonly IUnitService _unitService = new UnitService();
+    private readonly SettingsPageViewModel _settingsViewModel;
 
     [ObservableProperty]
     private ObservableCollection<DailyWaterIntake> _weeklyIntakes;
@@ -26,8 +28,9 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
     [ObservableProperty]
     private Axis[] _yAxes;
 
-    public WeeklyStatsPageViewModel()
+    public WeeklyStatsPageViewModel(SettingsPageViewModel settingsViewModel)
     {
+        _settingsViewModel = settingsViewModel;
         _weeklyIntakes = new ObservableCollection<DailyWaterIntake>();
         LoadWeeklyStats();
     }
@@ -42,7 +45,12 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
         foreach (var intake in intakes)
         {
             WeeklyIntakes.Add(intake);
-            seriesData.Add(intake.Intake);
+            double intakeValue = intake.Intake;
+            if (_unitService.GetUnit() == WaterUnits.Ounces)
+            {
+                intakeValue = Math.Round(intakeValue / 29.5735, 1); // Convert ml to oz
+            }
+            seriesData.Add(intakeValue);
             dateLabels.Add(intake.Date.ToString("MM/dd"));
         }
 
