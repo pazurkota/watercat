@@ -1,6 +1,4 @@
-﻿using watercat.Model;
-
-namespace watercat.Services;
+﻿namespace watercat.Model;
 
 public interface IUnitService
 {

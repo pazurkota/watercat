@@ -5,6 +5,7 @@ using watercat.Pages;
 using watercat.Services;
 using watercat.ViewModel;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using watercat.Model;
 
 namespace watercat;
 

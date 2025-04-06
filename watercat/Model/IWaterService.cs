@@ -1,4 +1,4 @@
-﻿namespace watercat.Services;
+﻿namespace watercat.Model;
 
 public interface IWaterService
 {
