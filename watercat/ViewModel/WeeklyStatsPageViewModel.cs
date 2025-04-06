@@ -12,10 +12,9 @@ namespace watercat.ViewModel;
 
 public partial class WeeklyStatsPageViewModel : ObservableObject
 {
-    private readonly IDailyIntakeDbService _intakeDbService = new DailyIntakeDbService();
     private readonly IUnitService _unitService = new UnitService();
     private readonly IWaterUnitConverter _waterUnitConverter = new WaterUnitConverter();
-    private readonly SettingsPageViewModel _settingsViewModel;
+    private readonly IWeeklyStatsService _weeklyStatsService;
 
     [ObservableProperty]
     private ObservableCollection<DailyWaterIntake> _weeklyIntakes;
@@ -29,17 +28,17 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
     [ObservableProperty]
     private Axis[] _yAxes;
 
-    public WeeklyStatsPageViewModel(SettingsPageViewModel settingsViewModel)
+    public WeeklyStatsPageViewModel(IWeeklyStatsService service)
     {
-        _settingsViewModel = settingsViewModel;
-        _weeklyIntakes = new ObservableCollection<DailyWaterIntake>();
+        _weeklyStatsService = service;
         LoadWeeklyStats();
     }
 
     public async void LoadWeeklyStats()
     {
-        var intakes = await _intakeDbService.GetWeeklyIntakes();
+        var intakes = await _weeklyStatsService.GetDailyWaterIntakesAsync();
         WeeklyIntakes.Clear();
+        
         var seriesData = new List<double>();
         var dateLabels = new List<string>();
 
@@ -54,17 +53,17 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
             dateLabels.Add(intake.Date.ToString("MM/dd"));
         }
 
-        Series = new ISeries[]
-        {
+        Series =
+        [
             new ColumnSeries<double>
             {
                 Values = seriesData,
                 Fill = new SolidColorPaint(SKColors.Olive)
             }
-        };
+        ];
 
-        XAxes = new Axis[]
-        {
+        XAxes =
+        [
             new Axis
             {
                 Labels = dateLabels,
@@ -74,14 +73,14 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
                 NameTextSize = 14,
                 NamePaint = new SolidColorPaint(SKColors.Black)
             }
-        };
+        ];
 
-        YAxes = new Axis[]
-        {
+        YAxes =
+        [
             new Axis
             {
                 MinLimit = 0
             }
-        };
+        ];
     }
 }
