@@ -14,6 +14,7 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
 {
     private readonly IDailyIntakeDbService _intakeDbService = new DailyIntakeDbService();
     private readonly IUnitService _unitService = new UnitService();
+    private readonly IWaterUnitConverter _waterUnitConverter = new WaterUnitConverter();
     private readonly SettingsPageViewModel _settingsViewModel;
 
     [ObservableProperty]
@@ -46,10 +47,9 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
         {
             WeeklyIntakes.Add(intake);
             double intakeValue = intake.Intake;
-            if (_unitService.GetUnit() == WaterUnits.Ounces)
-            {
-                intakeValue = Math.Round(intakeValue / 29.5735, 1); // Convert ml to oz
-            }
+            
+            intakeValue = _waterUnitConverter.ConvertUnit(_unitService.GetUnit(), intakeValue);
+            
             seriesData.Add(intakeValue);
             dateLabels.Add(intake.Date.ToString("MM/dd"));
         }
