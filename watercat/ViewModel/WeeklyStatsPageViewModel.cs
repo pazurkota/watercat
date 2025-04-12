@@ -17,7 +17,7 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
     private readonly IWeeklyStatsService _weeklyStatsService;
 
     [ObservableProperty]
-    private ObservableCollection<DailyWaterIntake> _weeklyIntakes;
+    private ObservableCollection<DailyWaterIntake> _weeklyIntakes = new();
 
     [ObservableProperty]
     private ISeries[] _series;
