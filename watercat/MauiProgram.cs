@@ -44,6 +44,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IUnitService, UnitService>();
         builder.Services.AddSingleton<IWaterUnitConverter, WaterUnitConverter>();
         builder.Services.AddSingleton<IDailyIntakeDbService, DailyIntakeDbService>();
+        builder.Services.AddSingleton<IWeeklyStatsService, WeeklyStatsService>();
         
         return builder.Build();
     }
