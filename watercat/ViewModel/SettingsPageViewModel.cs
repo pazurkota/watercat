@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
+using watercat.Model;
 using watercat.Pages.Popups;
-using watercat.Services;
 
 namespace watercat.ViewModel;
 
