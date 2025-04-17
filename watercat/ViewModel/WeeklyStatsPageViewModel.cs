@@ -50,7 +50,7 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
             intakeValue = _waterUnitConverter.ConvertUnit(_unitService.GetUnit(), intakeValue);
             
             seriesData.Add(intakeValue);
-            dateLabels.Add(intake.Date.ToString("MM/dd"));
+            dateLabels.Add(intake.Date.ToString("MM/dd/yyyy"));
         }
 
         Series =
@@ -58,7 +58,7 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
             new ColumnSeries<double>
             {
                 Values = seriesData,
-                Fill = new SolidColorPaint(SKColors.Olive)
+                Fill = new SolidColorPaint(SKColor.Parse("#A3D5FF"))
             }
         ];
 
@@ -69,9 +69,8 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
                 Labels = dateLabels,
                 LabelsRotation = 45,
                 TextSize = 12,
-                Name = "Date",
                 NameTextSize = 14,
-                NamePaint = new SolidColorPaint(SKColors.Black)
+                LabelsPaint = new SolidColorPaint(SKColor.Parse("#A3D5FF"))
             }
         ];
 
@@ -79,7 +78,8 @@ public partial class WeeklyStatsPageViewModel : ObservableObject
         [
             new Axis
             {
-                MinLimit = 0
+                MinLimit = 0,
+                LabelsPaint = new SolidColorPaint(SKColor.Parse("#A3D5FF"))
             }
         ];
     }
