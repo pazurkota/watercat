@@ -76,6 +76,7 @@ public partial class MainPageViewModel : ObservableObject
         string waterIntake = $"{_unitConverter.ConvertUnit(_unitService.GetUnit(), WaterIntake)}";
         
         WaterSummary = $"{waterIntake} {_unitService.UnitPrefix(unit)}/{DailyWaterGoal} {_unitService.UnitPrefix(unit)}";
+        WaterSummary = WaterSummary.ToUpper();
     }
 
     private double ConvertUnit(double value)

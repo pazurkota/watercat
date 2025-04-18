@@ -3,24 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:watercat.ViewModel"
              x:Class="watercat.Pages.MainPage"
-             BackgroundColor="#A2D2FF">
+             BackgroundColor="{StaticResource Primary}">
     <ContentPage.BindingContext>
            <viewmodel:MainPageViewModel />
     </ContentPage.BindingContext>   
        
     <ScrollView>
         <VerticalStackLayout>
-            <Image Margin="20, 0"
-                   Source="top_banner.png"
-                   Aspect="AspectFit"
-                   Scale="1.15"/>
-            
-            <Label Margin="20, 0"
-                   Text="Total water you drank today:"
-                   FontSize="20"
-                   HorizontalTextAlignment="Center"
-                   TextColor="#FFFFFF"
-                   FontFamily="PressStart2P"/>
+           <Label Margin="20, 25"
+                  Text="WELCOME!"
+                  FontSize="20"
+                  HorizontalTextAlignment="Center"
+                  TextColor="{StaticResource Text}"
+                  FontFamily="PressStart2P"/>
+               
+           <Label Margin="20, 0"
+                  Text="Total water you drank today:"
+                  FontSize="20"
+                  HorizontalTextAlignment="Center"
+                  TextColor="{StaticResource Text}"
+                  FontFamily="PressStart2P"/>
             
             <Image Source="{Binding WaterImage}"
                    HeightRequest="330"
@@ -28,22 +30,29 @@
                    Aspect="AspectFill"/>
             
             <Label Text="{Binding WaterSummary}"
-                   TextColor="#FFFFFF"
+                   TextColor="{StaticResource Text}"
                    HorizontalTextAlignment="Center"
-                   FontFamily="Silkscreen"
-                   FontSize="25"/>
+                   FontFamily="PressStart2P"
+                   FontSize="20"/>
+           
+           <Label Margin="20, 12"
+                  Text="(0/100%)"
+                  FontSize="15"
+                  HorizontalTextAlignment="Center"
+                  TextColor="{StaticResource Text}"
+                  FontFamily="PressStart2P"/>
             
             <Button Margin="70, 20"
                     Text="Log water"
-                    TextColor="#FFFFFF"
-                    BackgroundColor="#BDE0FE"
+                    TextColor="{StaticResource Text}"
+                    BackgroundColor="{StaticResource Tertiary}"
                     FontFamily="PressStart2P"
                     Command="{Binding ShowPopUpCommand}"/>
             
             <Button Margin="70, 0"
                     Text="Reset Water"
-                    TextColor="#FFFFFF"
-                    BackgroundColor="#BDE0FE"
+                    TextColor="{StaticResource Text}"
+                    BackgroundColor="{StaticResource Tertiary}"
                     FontFamily="PressStart2P"
                     Command="{Binding ResetWaterIntakeCommand}"/>
         </VerticalStackLayout>

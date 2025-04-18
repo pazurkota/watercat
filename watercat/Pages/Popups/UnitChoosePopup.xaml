@@ -6,28 +6,28 @@
              x:Class="watercat.Pages.Popups.UnitChoosePopup"
              Color="Transparent">
     
-    <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="180" WidthRequest="250">
+    <Border BackgroundColor="{StaticResource Primary}"  Stroke="Transparent" HeightRequest="180" WidthRequest="250">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="10"/>
         </Border.StrokeShape>
         
         <VerticalStackLayout Spacing="10" Padding="20">
             <Label Text="Choose unit:" 
-                   TextColor="#FFFFFF"
+                   TextColor="{StaticResource Text}"
                    FontFamily="PressStart2P"
                    FontSize="16"
                    HorizontalTextAlignment="Center"/>
             
             <Button Text="Milliliters"
                     FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"
-                    CommandParameter="180"
+                    BackgroundColor="{StaticResource Tertiary}"
+                    TextColor="{StaticResource Text}"
                     Clicked="Button_SetMilliliters"/>
         
             <Button Text="Ounce"
                     FontFamily="Silkscreen"
-                    BackgroundColor="#BDE0FE"
-                    CommandParameter="250"
+                    TextColor="{StaticResource Text}"
+                    BackgroundColor="{StaticResource Tertiary}"
                     Clicked="Button_SetOunces"/>
         </VerticalStackLayout>
     </Border>
