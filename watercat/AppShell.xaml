@@ -11,13 +11,13 @@
     
     <TabBar>
         <Tab Title="Settings" Icon="settings.svg">
-            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"></ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
         </Tab>
-        <Tab Title="Main Page" Icon="water_drop.svg">
-            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}"></ShellContent>
+        <Tab Title="Daily Intake" Icon="water_drop.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
         </Tab>
         <Tab Title="Weekly Stats" Icon="monitoring.svg">
-            <ShellContent ContentTemplate="{DataTemplate pages:WeeklyStatsPage}"></ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate pages:WeeklyStatsPage}" />
         </Tab>
     </TabBar>
     
