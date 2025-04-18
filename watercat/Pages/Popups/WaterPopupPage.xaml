@@ -12,7 +12,7 @@
     </toolkit:Popup.BindingContext>
     
 
-        <Border BackgroundColor="#CDB4DB"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
+        <Border BackgroundColor="{StaticResource Primary}"  Stroke="Transparent" HeightRequest="300" WidthRequest="250">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
@@ -21,35 +21,38 @@
                 <Label Text="Log water:"
                        FontFamily="PressStart2P"
                        FontSize="20"
-                       TextColor="#FFFFFF"
+                       TextColor="{StaticResource Text}"
                        HorizontalTextAlignment="Center"/>
         
                 <Button Text="{Binding FirstButton}"
                         FontFamily="Silkscreen"
-                        BackgroundColor="#BDE0FE"
+                        BackgroundColor="{StaticResource Tertiary}"
                         Command="{Binding AddWaterCommand}"
+                        TextColor="{StaticResource Text}"
                         CommandParameter="180"/>
         
                 <Button Text="{Binding SecondButton}"
                         FontFamily="Silkscreen"
-                        BackgroundColor="#BDE0FE"
+                        BackgroundColor="{StaticResource Tertiary}"
                         Command="{Binding AddWaterCommand}"
+                        TextColor="{StaticResource Text}"
                         CommandParameter="250"/>
         
                 <Button Text="{Binding ThirdButton}"
                         FontFamily="Silkscreen"
-                        BackgroundColor="#BDE0FE"
+                        BackgroundColor="{StaticResource Tertiary}"
                         Command="{Binding AddWaterCommand}"
+                        TextColor="{StaticResource Text}"
                         CommandParameter="500"/>
         
                 <Label Text="Custom amount:"
                        FontFamily="PressStart2P"
                        FontSize="13"
-                       TextColor="#FFFFFF"
+                       TextColor="{StaticResource Text}"
                        HorizontalTextAlignment="Center"/>
         
                 <Entry Keyboard="Numeric"
-                       TextColor="#FFFFFF"
+                       TextColor="{StaticResource Text}"
                        FontFamily="Silkscreen"
                        WidthRequest="200"
                        Completed="Entry_OnCompleted"
