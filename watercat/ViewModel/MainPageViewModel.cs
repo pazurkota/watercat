@@ -11,6 +11,7 @@ public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty] private int _waterIntake;
     [ObservableProperty] private int _dailyWaterGoal = 2500;
+    [ObservableProperty] private string _dailyWaterPercent;
     [ObservableProperty] private string _waterImage;
     [ObservableProperty] private string _waterSummary;
     [ObservableProperty] private string _waterUnit;
@@ -73,9 +74,12 @@ public partial class MainPageViewModel : ObservableObject
         WaterImage = UpdateWaterImage();
         WaterUnits unit = _unitService.GetUnit();
 
+        var percentage = ConvertUnit(WaterIntake) / DailyWaterGoal * 100;
         string waterIntake = $"{_unitConverter.ConvertUnit(_unitService.GetUnit(), WaterIntake)}";
-        
+
+        DailyWaterPercent = $"({(int)percentage}%/100%)";
         WaterSummary = $"{waterIntake} {_unitService.UnitPrefix(unit)}/{DailyWaterGoal} {_unitService.UnitPrefix(unit)}";
+        WaterSummary = WaterSummary.ToUpper();
     }
 
     private double ConvertUnit(double value)

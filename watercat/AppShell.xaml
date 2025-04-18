@@ -4,17 +4,20 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:watercat.Pages"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="{StaticResource Secondary}"
+    Shell.TabBarTitleColor="{StaticResource Text}"
+    Shell.TabBarUnselectedColor="{StaticResource Tertiary}">
     
     <TabBar>
-        <Tab Title="Settings">
-            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"></ShellContent>
+        <Tab Title="Settings" Icon="settings.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}" />
         </Tab>
-        <Tab Title="Main Page">
-            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}"></ShellContent>
+        <Tab Title="Daily Intake" Icon="water_drop.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:MainPage}" />
         </Tab>
-        <Tab Title="Weekly Stats">
-            <ShellContent ContentTemplate="{DataTemplate pages:WeeklyStatsPage}"></ShellContent>
+        <Tab Title="Weekly Stats" Icon="monitoring.svg">
+            <ShellContent ContentTemplate="{DataTemplate pages:WeeklyStatsPage}" />
         </Tab>
     </TabBar>
     

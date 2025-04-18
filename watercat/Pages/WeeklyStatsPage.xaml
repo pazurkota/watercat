@@ -1,27 +1,22 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
-             x:Class="watercat.Pages.WeeklyStatsPage">
+             x:Class="watercat.Pages.WeeklyStatsPage"
+             BackgroundColor="{StaticResource Primary}">
     <StackLayout Spacing="25">
-        <Label Text="Your water stats:"
+        <Label Text="YOUR WATER STATS:"
                HorizontalTextAlignment="Center"
                FontFamily="PressStart2P"
-               Padding="15"/>
+               Padding="0,20,0, 0"
+               TextColor="{StaticResource Text}"
+               FontSize="20"/>
 
         <lvc:CartesianChart
             Series="{Binding Series}"
             XAxes="{Binding XAxes}"
             YAxes="{Binding YAxes}"
-            HeightRequest="350"
+            HeightRequest="500"
             EasingFunction="{x:Null}">
         </lvc:CartesianChart>
-
-        <ListView x:Name="WeeklyStatsListView" ItemsSource="{Binding WeeklyIntakes}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Date}" Detail="{Binding Intake}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
     </StackLayout>
 </ContentPage>
