@@ -5,7 +5,7 @@
              xmlns:pages="clr-namespace:watercat.Pages"
              xmlns:viewmodel="clr-namespace:watercat.ViewModel"
              x:Class="watercat.Pages.SettingsPage"
-             BackgroundColor="#A2D2FF">
+             BackgroundColor="{StaticResource Primary}">
     <ContentPage.BindingContext>
         <viewmodel:SettingsPageViewModel />
     </ContentPage.BindingContext>
@@ -13,8 +13,8 @@
     <ContentPage.Content>
         <ScrollView>
             <VerticalStackLayout Spacing="10" Margin="20">
-                <Label Text="Settings:" 
-                       TextColor="#FFFFFF"
+                <Label Text="SETTINGS:" 
+                       TextColor="{StaticResource Text}"
                        FontFamily="PressStart2P"
                        FontSize="20"
                        HorizontalTextAlignment="Center"/>
@@ -23,7 +23,7 @@
                 <Grid ColumnDefinitions="*, *">
                     <Label Grid.Column="0"
                            Text="Daily Goal:"
-                           TextColor="#FFFFFF"
+                           TextColor="{StaticResource Text}"
                            FontSize="20"
                            FontFamily="Silkscreen"
                            VerticalTextAlignment="Center"/>
@@ -39,26 +39,27 @@
                 <Grid ColumnDefinitions="*, *">
                     <Label Grid.Column="0"
                            Text="Units:"
-                           TextColor="#FFFFFF"
+                           TextColor="{StaticResource Text}"
                            FontSize="20"
                            FontFamily="Silkscreen"
                            VerticalTextAlignment="Center"/>
                     
                     <Button Grid.Column="1"
-                            Background="#CDB4DB"
+                            Background="{StaticResource Tertiary}"
                             Text="Choose unit"
                             FontSize="20"
                             FontFamily="Silkscreen"
-                            TextColor="#FFFFFF"
+                            TextColor="{StaticResource Text}"
                             Command="{Binding ShowUnitsChoosePopupCommand}"/>
                 </Grid>
                 
                 <Button Margin="0, 20"
                         Text="About" 
                         FontFamily="Silkscreen"
-                        Background="#CDB4DB"
+                        Background="{StaticResource Tertiary}"
                         FontSize="20"
                         WidthRequest="200"
+                        TextColor="{StaticResource Text}"
                         Command="{Binding ShowAboutPopupCommand}"/>
             </VerticalStackLayout>
         </ScrollView>
