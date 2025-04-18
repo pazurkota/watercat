@@ -36,7 +36,7 @@
                    FontSize="20"/>
            
            <Label Margin="20, 12"
-                  Text="(0/100%)"
+                  Text="{Binding DailyWaterPercent}"
                   FontSize="15"
                   HorizontalTextAlignment="Center"
                   TextColor="{StaticResource Text}"
