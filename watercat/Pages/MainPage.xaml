@@ -44,15 +44,15 @@
             
             <Button Margin="70, 20"
                     Text="Log water"
-                    TextColor="#FFFFFF"
-                    BackgroundColor="#BDE0FE"
+                    TextColor="{StaticResource Text}"
+                    BackgroundColor="{StaticResource Tertiary}"
                     FontFamily="PressStart2P"
                     Command="{Binding ShowPopUpCommand}"/>
             
             <Button Margin="70, 0"
                     Text="Reset Water"
-                    TextColor="#FFFFFF"
-                    BackgroundColor="#BDE0FE"
+                    TextColor="{StaticResource Text}"
+                    BackgroundColor="{StaticResource Tertiary}"
                     FontFamily="PressStart2P"
                     Command="{Binding ResetWaterIntakeCommand}"/>
         </VerticalStackLayout>
