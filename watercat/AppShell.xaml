@@ -7,13 +7,13 @@
     Shell.FlyoutBehavior="Disabled">
     
     <TabBar>
-        <Tab Title="Settings">
+        <Tab Title="Settings" Icon="settings.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:SettingsPage}"></ShellContent>
         </Tab>
-        <Tab Title="Main Page">
+        <Tab Title="Main Page" Icon="water_drop.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:MainPage}"></ShellContent>
         </Tab>
-        <Tab Title="Weekly Stats">
+        <Tab Title="Weekly Stats" Icon="monitoring.svg">
             <ShellContent ContentTemplate="{DataTemplate pages:WeeklyStatsPage}"></ShellContent>
         </Tab>
     </TabBar>
