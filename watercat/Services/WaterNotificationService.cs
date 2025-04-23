@@ -4,7 +4,7 @@ using Plugin.LocalNotification;
 
 namespace watercat.Services;
 
-public class NotificationService : IWaterNotificationService
+public class WaterNotificationService : IWaterNotificationService
 {
     public async Task RequestPermissionAsync()
     {
