@@ -27,7 +27,7 @@ public class WaterNotificationService : IWaterNotificationService
         LocalNotificationCenter.Current.Show(request);
     }
 
-    public void SendWaterProgressNotification(double percent, int remaining)
+    public void SendWaterProgressNotification(double percent, double remaining)
     {
         string message;
 

@@ -3,7 +3,7 @@ using Plugin.LocalNotification;
 
 namespace watercat.Services;
 
-public class NotificationSchedulerService(IWaterService waterService, IWaterNotificationService notificationService) : INotificationSchedulerService
+public class NotificationSchedulerService(IWaterProgressTrackService progressTrack, IWaterNotificationService notificationService) : INotificationSchedulerService
 {
     private Timer _timer;
     
@@ -17,7 +17,7 @@ public class NotificationSchedulerService(IWaterService waterService, IWaterNoti
             if (notifyTime <= DateTime.Now)
                notifyTime = notifyTime.AddDays(1);
             
-            notificationService.SendWaterProgressNotification();
+            notificationService.SendWaterProgressNotification(progressTrack.GetProgressPercent(), progressTrack.GetRemaining());
         }
     }
 
