@@ -53,6 +53,24 @@
                             Command="{Binding ShowUnitsChoosePopupCommand}"/>
                 </Grid>
                 
+                <!-- Water notification settings -->
+                <Grid ColumnDefinitions="*, *">
+                    <Label Grid.Column="0"
+                           Text="Notification:"
+                           TextColor="{StaticResource Text}"
+                           FontSize="20"
+                           FontFamily="Silkscreen"
+                           VerticalTextAlignment="Center"/>
+                    
+                    <Button Grid.Column="1"
+                            Background="{StaticResource Tertiary}"
+                            Text="Toggle"
+                            FontSize="20"
+                            FontFamily="Silkscreen"
+                            TextColor="{StaticResource Text}"
+                            Clicked="OnNotifyClicked"/>
+                </Grid>
+                
                 <Button Margin="0, 20"
                         Text="About" 
                         FontFamily="Silkscreen"
