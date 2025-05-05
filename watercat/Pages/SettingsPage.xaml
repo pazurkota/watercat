@@ -64,7 +64,7 @@
                     
                     <Button Grid.Column="1"
                             Background="{StaticResource Tertiary}"
-                            Text="Enable"
+                            Text="Toggle"
                             FontSize="20"
                             FontFamily="Silkscreen"
                             TextColor="{StaticResource Text}"

@@ -10,6 +10,8 @@ public partial class SettingsPage : ContentPage
 {
     private readonly IWaterNotificationService _notificationService;
     private readonly INotificationSchedulerService _notificationSchedulerService;
+
+    private bool _notificationsEnabled;
     
     public SettingsPage(SettingsPageViewModel _viewModel,
         IWaterNotificationService notificationService,
@@ -32,8 +34,18 @@ public partial class SettingsPage : ContentPage
 
     private async void OnNotifyClicked(object sender, EventArgs e)
     {
-        await _notificationService.RequestPermissionAsync();
-        _notificationService.SendNotification("watercat", "Notifications are now enabled!");
-        _notificationSchedulerService.StartPeriodicNotifications(3, 9 , 21);
+        if (_notificationsEnabled)
+        {
+            await DisplayAlert("Notifications", "Notifications has been disabled!", "Dismiss");
+            _notificationSchedulerService.StopNotifications();
+            _notificationsEnabled = false;
+        }
+        else
+        {
+            await _notificationService.RequestPermissionAsync();
+            await DisplayAlert("Notifications", "Notifications has been enabled!", "Dismiss");
+            _notificationSchedulerService.StartPeriodicNotifications(3, 9, 21);
+            _notificationsEnabled = true;
+        }
     }
 }
